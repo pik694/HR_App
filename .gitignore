@@ -1,0 +1,8 @@
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+/recruit-me-web/node_modules/
