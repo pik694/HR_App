@@ -6,3 +6,5 @@
 *.ipr
 
 /recruit-me-web/node_modules/
+/recruit-me-web/target/
+/recruit-me-app/target/
