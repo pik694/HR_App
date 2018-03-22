@@ -1,13 +1,9 @@
-FROM mysql:5.7
+FROM mysql
+
+MAINTAINER Daniel Bigos <D.Bigos@stud.elka.pw.edu.pl>
+
+ENV MYSQL_DATABASE=recruit-me \ 
+    MYSQL_ROOT_PASSWORD=dupa
+
 
 EXPOSE 3306
-
-COPY ./setup.sql /tmp/setup.sql
-COPY ./entrypoint.sh /tmp/entrypoint.sh
-
-RUN chmod a+x /tmp/entrypoint.sh
-
-ENTRYPOINT ["/tmp/entrypoint.sh"]
-
-CMD ["mysqld", "/tmp/setup.sql"]
-
