@@ -21,7 +21,7 @@ then
     # Reference: https://docs.docker.com/userguide/dockervolumes/#creating-and-mounting-a-data-volume-container
     docker create -v /dbdata --name dbdata mysql:5.7 /bin/true
 
-    docker build -t sample/sql-java:v1 ./sql_server_docker/
+    docker build -t sample/sql-java:v1	./	 #./sql_server_docker/
 fi
 
 #docker build -t sample/java-docker:v1 ./java_docker/
