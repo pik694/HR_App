@@ -21,6 +21,6 @@ public class RecruitMeAppApplicationTests {
 
     @Test
     public void someFailingTest() {
-        assertThat(controller).isNull();
+        assertThat(controller).isNotNull();
     }
 }
