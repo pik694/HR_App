@@ -57,9 +57,6 @@ module.exports = function (config) {
         //Add IE Emulation
         var result = availableBrowser;
 
-        if (availableBrowser.indexOf('IE')>-1) {
-          result.push('IE9');
-        }
 
         //Remove PhantomJS if another browser has been detected
         if (availableBrowser.length > 1 && availableBrowser.indexOf('PhantomJS')>-1) {
