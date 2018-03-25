@@ -12,7 +12,7 @@ APP_IMAGE_RC=recruit-me-rc-
 APP_IMAGE_RC+=$BUILD_ID
 APP_IMAGE_RC+=VERSION
 
-if[ $GIT_BRANCH = "master" ]
+if [ $GIT_BRANCH = "origin/master" ]
 then
     docker ps -aqf "name=${APP_CONTAINER_MASTER}" | xargs docker stop | xargs docker rm
     docker rmi ${APP_IMAGE_MASTER}
@@ -21,7 +21,7 @@ then
     docker run --name=${APP_CONTAINER_MASTER} -p 8081:8081 -d ${APP_IMAGE_MASTER}
 fi
 
-if[ $GIT_BRANCH = "testing" ]
+if [ $GIT_BRANCH = "origin/testing" ]
 then
     docker ps -aqf "name=${APP_CONTAINER_RC}" | xargs docker stop | xargs docker rm
     docker rmi ${APP_IMAGE_RC}
