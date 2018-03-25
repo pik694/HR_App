@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION=":0.1.0-SNAPSHOT"
+VERSION=:0.1.0-SNAPSHOT
 
 APP_CONTAINER_MASTER=recruit-me
 APP_IMAGE_MASTER=recruit-me
@@ -10,7 +10,7 @@ APP_CONTAINER_RC=recruit-me-rc-
 APP_CONTAINER_RC+=$BUILD_ID
 APP_IMAGE_RC=recruit-me-rc-
 APP_IMAGE_RC+=$BUILD_ID
-APP_IMAGE_RC+=VERSION
+APP_IMAGE_RC+=$VERSION
 
 if [ $GIT_BRANCH = "origin/master" ]
 then
