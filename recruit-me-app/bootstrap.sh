@@ -17,7 +17,7 @@ then
     docker ps -aqf "name=${APP_CONTAINER_MASTER}" | xargs docker stop | xargs docker rm
     docker rmi ${APP_IMAGE_MASTER}
 
-    docker build -t ${APP_CONTAINER_MASTER} .
+    docker build -t ${APP_IMAGE_MASTER} .
     docker run --name=${APP_CONTAINER_MASTER} -p 8081:8081 -d ${APP_IMAGE_MASTER}
 fi
 
@@ -26,6 +26,6 @@ then
     docker ps -aqf "name=${APP_CONTAINER_RC}" | xargs docker stop | xargs docker rm
     docker rmi ${APP_IMAGE_RC}
 
-    docker build -t ${APP_CONTAINER_RC} .
+    docker build -t ${APP_IMAGE_RC} .
     docker run --name=${APP_CONTAINER_RC} -p 6969:6969 -d ${APP_IMAGE_RC}
 fi
