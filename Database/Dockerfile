@@ -1,10 +1,12 @@
-FROM mysql:5.7
+FROM mysql
 
-COPY ./setup.sql /tmp/setup.sql
-COPY ./entrypoint.sh /tmp/entrypoint.sh
+MAINTAINER Daniel Bigos <D.Bigos@stud.elka.pw.edu.pl>
 
-RUN chmod a+x /tmp/entrypoint.sh
+ENV MYSQL_DATABASE=RECRUIT_ME \
+    MYSQL_ROOT_PASSWORD=dupa \
+    MYSQL_USER=test \
+    MYSQL_PASSWORD=test6969
 
-ENTRYPOINT ["/tmp/entrypoint.sh"]
+ADD db_script.sql /docker-entrypoint-initdb.d
 
 EXPOSE 3306
