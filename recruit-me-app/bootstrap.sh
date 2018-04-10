@@ -26,7 +26,7 @@ fi
 if [ ${GIT_BRANCH:0:9} = "origin/rc" ]
 then
     docker ps -aqf "name=${APP_CONTAINER_RC}" | xargs docker stop | xargs docker rm
-    docker rmi ${APP_IMAGE_RC}
+    docker rmi ${APP_IMAGE_RC}:latest
 
     docker build -t ${APP_IMAGE_RC} .
     docker run --name=${APP_CONTAINER_RC} -p 6969:6969 -d ${APP_IMAGE_RC}:latest
