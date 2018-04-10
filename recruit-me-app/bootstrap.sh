@@ -20,7 +20,7 @@ then
     docker rmi ${APP_IMAGE_MASTER}
 
     docker build -t ${APP_IMAGE_MASTER} --build-arg JAR_FILE=recruit-me-app-${VERSION}.jar .
-    docker run --name=${APP_CONTAINER_MASTER} -p 8081:8081 -d ${APP_IMAGE_MASTER}
+    docker run --name=${APP_CONTAINER_MASTER} -p 8081:8080 -d ${APP_IMAGE_MASTER}
 
 fi
 
@@ -30,5 +30,5 @@ then
     docker rmi ${APP_IMAGE_RC}
 
     docker build -t ${APP_IMAGE_RC} --build-arg JAR_FILE=recruit-me-app-${VERSION}.jar .
-    docker run --name=${APP_CONTAINER_RC} -p 6969:8081 -d ${APP_IMAGE_RC}
+    docker run --name=${APP_CONTAINER_RC} -p 6969:8080 -d ${APP_IMAGE_RC}
 fi
