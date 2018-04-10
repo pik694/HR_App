@@ -10,7 +10,7 @@ RC_VER_LEN=${#GIT_BRANCH}
 RC_VER_LEN=`expr $RC_VER_LEN - 7`
 
 APP_CONTAINER_RC=recruit-me-rc
-APP_IMAGE_RC=recruit-me
+APP_IMAGE_RC=recruit-me-
 APP_IMAGE_RC+=${GIT_BRANCH:7:$RC_VER_LEN}
 
 if [ $GIT_BRANCH = "origin/master" ]
