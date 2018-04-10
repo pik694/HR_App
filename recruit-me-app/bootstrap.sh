@@ -30,5 +30,5 @@ then
     docker rmi ${APP_IMAGE_RC}
 
     docker build -t ${APP_IMAGE_RC} .
-    docker run --name=${APP_CONTAINER_RC} -p 6969:6969 -d ${APP_IMAGE_RC}
+    docker run --name=${APP_CONTAINER_RC} -p 6969:8081 -d ${APP_IMAGE_RC}
 fi
