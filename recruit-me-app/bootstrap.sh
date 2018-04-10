@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-VERSION=:0.1.0-SNAPSHOT
+VERSION=0.1.0-SNAPSHOT
 
 APP_CONTAINER_MASTER=recruit-me
 APP_IMAGE_MASTER=recruit-me
-APP_IMAGE_MASTER+=$VERSION
+APP_IMAGE_MASTER+=:$VERSION
 
 RC_VER_LEN=${#GIT_BRANCH}
 RC_VER_LEN=`expr $RC_VER_LEN - 7`
@@ -19,7 +19,7 @@ then
     docker ps -aqf "name=${APP_CONTAINER_MASTER}" | xargs docker stop | xargs docker rm
     docker rmi ${APP_IMAGE_MASTER}
 
-    docker build -t ${APP_IMAGE_MASTER} .
+    docker build -t ${APP_IMAGE_MASTER} --build-arg JAR_FILE=recruit-me-app-${VERSION}.jar .
     docker run --name=${APP_CONTAINER_MASTER} -p 8081:8081 -d ${APP_IMAGE_MASTER}
 
 fi
@@ -29,6 +29,6 @@ then
     docker ps -aqf "name=${APP_CONTAINER_RC}" | xargs docker stop | xargs docker rm
     docker rmi ${APP_IMAGE_RC}
 
-    docker build -t ${APP_IMAGE_RC} .
+    docker build -t ${APP_IMAGE_RC} --build-arg JAR_FILE=recruit-me-app-${VERSION}.jar .
     docker run --name=${APP_CONTAINER_RC} -p 6969:8081 -d ${APP_IMAGE_RC}
 fi
