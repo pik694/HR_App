@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
+html, body {
+    height: 100%;
+    background-image: linear-gradient(to right bottom, #ff0000, #ce000e, #9e0010, #70000d, #440202);
+}
