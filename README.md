@@ -2,23 +2,23 @@
 
 HR App is a simple application that should serve as a tool for recruiters. 
 It is a PIK semester project. 
-The aim of the project is to learn how to produce applications for corrporations. 
+The aim of the project is to learn how to produce applications for corporations. 
 For this reason we will try to work out some rules and will try to stick to them.
 
 ## Getting Started
 
-To get started just clone this reposotory
+To get started just clone this repository : 
 ```
 git clone https://github.com/pik694/HR_App
 ```
 We develop this code using IntelliJ IDE, this is why we recommend doing so.
 
 ### Prerequisites
-TODO
-What things you need to install the software and how to install them
+
 
 ```
 maven
+IntelliJ
 ```
 
 ### Installing
@@ -34,20 +34,34 @@ TODO
 Add additional notes about how to deploy this on a live system
 
 ## Built With
-TODO
+
 * [Maven](https://maven.apache.org/) - Dependency Management
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/pik694/HR_App/blob/devel/new/17/readme/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/pik694/HR_App/blob/master/docs/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Virtual machine
 
-We have a virtaul machine at our disposition. In order to connect to it please read [this file](https://github.com/pik694/HR_App/blob/devel/new/17/readme/Tunneling%20to%20PIK10.md)
+We have a virtual machine at our disposition. In order to connect to it please read [this file](https://github.com/pik694/HR_App/blob/master/docs/Tunneling%20to%20PIK10.md)
 
-## Versioning
-TODO
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+### Websites
+
+Links work only from the inside of elka network.
+
+* [http://pik10.ii.pw.edu.pl](http://pik10.ii.pw.edu.pl) - our application
+* [http://jenkins.pik10.ii.pw.edu.pl](http://jenkins.pik10.ii.pw.edu.pl) - Jenkins
+* [http://artifactory.pik10.ii.pw.edu.pl](http://artifactory.pik10.ii.pw.edu.pl) - Artifactory
+
+VM's IP address ``192.168.162.230``
+
+## System requirements
+
+We use Github Issues to manage system requirements. All of them are properly labeled and can be found [here](https://github.com/pik694/HR_App/labels/functional%20requirement).
+
+### User stories
+
+User stories are maintained in the following file [user-stories.md](https://github.com/pik694/HR_App/blob/master/docs/user-stories.md) 
 
 ## Authors
 
