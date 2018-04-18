@@ -11,7 +11,7 @@ class RecruiterSpec extends Specification  implements SampleRecruiters {
 
     @After
     def "remove recruiters"() {
-        facade.delete(jkowalski.id, akwiatkowska.id);
+        facade.delete(jkowalski.id, akwiatkowska.id)
     }
 
     def "should add recruiter"(){

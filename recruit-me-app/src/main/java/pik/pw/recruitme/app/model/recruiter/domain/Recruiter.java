@@ -11,6 +11,7 @@ class Recruiter {
 
     RecruiterDTO toDTO(){
         return RecruiterDTO.builder()
+                .id(id)
                 .name(name)
                 .surname(surname)
                 .build();
