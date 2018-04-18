@@ -14,28 +14,42 @@ git clone https://github.com/pik694/HR_App
 We develop this code using IntelliJ IDE, this is why we recommend doing so.
 
 ### Prerequisites
-
-
 ```
 maven
 IntelliJ
 ```
 
-### Installing
-TODO
-A step by step series of examples that tell you have to get a development env running
+## Building
 
-## Running the tests
-TODO
-Explain how to run the automated tests for this system
+We use [Maven](https://maven.apache.org/) as a software project management and comprehension tool. 
+Maven provides a complete build lifecycle framework.
 
-## Deployment
-TODO
-Add additional notes about how to deploy this on a live system
+##### Possible build lifecycles
+| Phase         | Handles                    | Description                                                                                    |
+| :-----------: |:--------------------------:| :----------------------------------------------------------------------------------------------|
+| validate      | Validating the information | Validates if the project is correct and if all necessary information is available.             |
+| compile       | compilation                | Source code compilation is done in this phase.                                                 |
+| test          | testing                    | Tests the compiled source code suitable for testing framework.                                 |
+| package       | packaging                  | This phase creates the JAR package as mentioned in the packaging in POM.xml.                   |
+| install       | installation               | This phase installs the package in local maven repository.                                     |
+| deploy        | deployment                 | Copies the final package to the remote repository.                                             |   
 
-## Built With
+#### Building app
+```
+mvn clean package
+```
 
-* [Maven](https://maven.apache.org/) - Dependency Management
+#### Running the tests
+```
+mvn clean test
+```
+Running tests is automatically done by Jenkins job on release candidate branches.
+
+#### Deployment
+```
+mvn clean deploy
+```
+Automated deployment is done by Jenkins job on the master branch.
 
 ## Contributing
 
@@ -88,8 +102,8 @@ We use __Docker__ containers. One for DB and one for the server application itse
 
 ## Authors
 
-* **Bartosz Kołodziejski** - [BKolodziejski](https://github.com/BKolodziejski)
 * **Daniel Bigos** - [bidzyyys](https://github.com/bidzyyys)
+* **Bartosz Kołodziejski** - [BKolodziejski](https://github.com/BKolodziejski)
 * **Piotr Żelazko** - [pik694](https://github.com/pik694)
 
 
@@ -97,5 +111,5 @@ See also the list of [contributors](https://github.com/pik694/HR_App/contributor
 
 ## License
 
-TODO
+1000$ per month paid to [bidzyyys](https://github.com/bidzyyys)
 
