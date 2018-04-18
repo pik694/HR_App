@@ -63,6 +63,29 @@ We use Github Issues to manage system requirements. All of them are properly lab
 
 User stories are maintained in the following file [user-stories.md](https://github.com/pik694/HR_App/blob/master/docs/user-stories.md) 
 
+## System architecture
+
+#### Used technologies 
+Our system is a simple web application. <br/>
+We use:
+- __Spring MVC__ - framework  that fastens our controllers with requests from a client.
+- __AngularJS__ - user interface on the client side
+- __Hibernate__ - connection with the database
+- __Tomcat__ - servlet engine
+- __MariaDB__ - MySQL database
+- __Nginx__ - talks with a web browser on port ``80``. Can be used as a load balancer. 
+
+We use __Docker__ containers. One for DB and one for the server application itself.
+
+#### Requests' flow
+1. Client requests specific data or an action (eg. delete data)- request to Nginx server
+1. HTTP server moves request to Tomcat
+1. Tomcat, on behalf of, invokes method of a controller.
+1. Controller requests data from its model.
+1. Model processes the request.
+1. Model talks to the db.
+1. Model returns the answer all the way up.
+
 ## Authors
 
 * **Bartosz Kołodziejski** - [BKolodziejski](https://github.com/BKolodziejski)
