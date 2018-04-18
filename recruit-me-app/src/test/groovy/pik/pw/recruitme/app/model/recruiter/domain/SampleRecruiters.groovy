@@ -5,8 +5,8 @@ import pik.pw.recruitme.app.model.recruiter.dto.RecruiterDTO
 
 @CompileStatic
 trait SampleRecruiters {
-    RecruiterDTO jkowalski = createRecruiterDTO(1, "Jan", "Kowalski");
-    RecruiterDTO akwiatkowska = createRecruiterDTO(2, "Anna", "Kowalska");
+    RecruiterDTO smith = createRecruiterDTO(1, "John", "Smith")
+    RecruiterDTO jones = createRecruiterDTO(2, "William", "Jones")
 
     static private RecruiterDTO createRecruiterDTO(int id, String name, String surname) {
         return RecruiterDTO.builder()

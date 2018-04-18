@@ -1,21 +1,24 @@
 package pik.pw.recruitme.app.model.recruiter.domain;
 
 
+import lombok.Getter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 import pik.pw.recruitme.app.model.recruiter.dto.RecruiterDTO;
 
 import java.util.Arrays;
 
 import static java.util.Objects.requireNonNull;
 
-
+@Transactional
+@Getter
 public class RecruiterFacade {
 
-    private InMemoryRecruiterRepository repository;
+    private RecruiterRepository repository;
     private RecruiterCreator recruiterCreator;
 
-    public RecruiterFacade(InMemoryRecruiterRepository repository, RecruiterCreator recruiterCreator) {
+    public RecruiterFacade(RecruiterRepository repository, RecruiterCreator recruiterCreator) {
         this.repository = repository;
         this.recruiterCreator = recruiterCreator;
     }
@@ -37,7 +40,7 @@ public class RecruiterFacade {
     }
 
 
-    public void delete(Integer... ids){
+    public void delete(Integer... ids) {
 
         requireNonNull(ids);
 
@@ -47,7 +50,7 @@ public class RecruiterFacade {
 
     }
 
-    public Page<RecruiterDTO> findAll(Pageable pageable){
+    public Page<RecruiterDTO> findAll(Pageable pageable) {
         requireNonNull(pageable);
         return repository
                 .findAll(pageable)

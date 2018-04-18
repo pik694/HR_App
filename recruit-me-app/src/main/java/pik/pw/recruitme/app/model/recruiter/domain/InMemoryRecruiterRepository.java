@@ -1,5 +1,6 @@
 package pik.pw.recruitme.app.model.recruiter.domain;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -9,11 +10,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static java.util.Objects.requireNonNull;
 
-class InMemoryRecruiterRepository {
+class InMemoryRecruiterRepository implements RecruiterRepository {
 
     private ConcurrentHashMap<Integer, Recruiter> map = new ConcurrentHashMap<>();
 
-    Recruiter save(Recruiter recruiter) {
+    public Recruiter save(Recruiter recruiter) {
 
         requireNonNull(recruiter);
 
@@ -23,31 +24,23 @@ class InMemoryRecruiterRepository {
 
     }
 
-    Recruiter findByIdOrThrow(Integer id) {
+    public Recruiter findById(Integer id) {
 
-        Recruiter recruiter = map.get(id);
+        return map.get(id);
 
-        if (recruiter == null) {
-            throw new RecruiterNotFoundException(id);
-        }
-        return recruiter;
     }
 
-    void deleteById(Integer id) {
+    public void deleteById(Integer id) {
         map.remove(id);
     }
 
 
-    Page<Recruiter> findAll(Pageable pageable) {
+    public Page<Recruiter> findAll(Pageable pageable) {
 
         return new PageImpl<>(new ArrayList<>(map.values()), pageable, map.size());
     }
 
 
-    class RecruiterNotFoundException extends RuntimeException {
-        RecruiterNotFoundException(Integer id) {
-            super("Could not find a recruiter with id: " + id.toString());
-        }
-    }
+
 
 }
