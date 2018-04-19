@@ -12,7 +12,7 @@ import pik.pw.recruitme.app.model.recruiter.dto.RecruiterDTO;
 public class RecruiterController {
     private RecruiterFacade recruiterFacade;
 
-    public RecruiterController(RecruiterFacade recruiterFacade){
+    public RecruiterController(RecruiterFacade recruiterFacade) {
         this.recruiterFacade = recruiterFacade;
     }
 

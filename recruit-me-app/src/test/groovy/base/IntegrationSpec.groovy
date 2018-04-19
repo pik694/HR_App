@@ -16,7 +16,6 @@ import spock.lang.Specification
 import javax.transaction.Transactional
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity
 
 @ActiveProfiles([Profiles.TEST])
 @ContextConfiguration

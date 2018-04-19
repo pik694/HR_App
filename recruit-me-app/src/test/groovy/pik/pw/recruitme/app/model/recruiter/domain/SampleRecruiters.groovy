@@ -10,9 +10,9 @@ trait SampleRecruiters {
 
     static private RecruiterDTO createRecruiterDTO(int id, String name, String surname) {
         return RecruiterDTO.builder()
-                                .id(id)
-                                .name(name)
-                                .surname(surname)
-                                .build()
+                .id(id)
+                .name(name)
+                .surname(surname)
+                .build()
     }
 }

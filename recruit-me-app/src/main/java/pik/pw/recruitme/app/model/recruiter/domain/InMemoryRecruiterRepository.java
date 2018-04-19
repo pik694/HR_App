@@ -1,6 +1,5 @@
 package pik.pw.recruitme.app.model.recruiter.domain;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -39,8 +38,6 @@ class InMemoryRecruiterRepository implements RecruiterRepository {
 
         return new PageImpl<>(new ArrayList<>(map.values()), pageable, map.size());
     }
-
-
 
 
 }

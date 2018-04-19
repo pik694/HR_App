@@ -3,7 +3,7 @@ package pik.pw.recruitme.app.infrastructure.config;
 /**
  * This is a set of typical profiles used in andamio.
  * Default profile is set to local.
- *
+ * <p>
  * This is a class, not an enum, because in different technologies (Groovy for example) enums get tricky to use
  * in annotations over classes in different source roots (test directory).
  */
