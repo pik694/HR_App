@@ -1,0 +1,31 @@
+<section class="model-details">
+  <h3>{{ recruiter.username }}</h3>
+  <p>First Name: {{ recruiter.firstName }}</p>
+  <p>Last Name: {{ recruiter.lastName }}</p>
+  <p>E-mail: {{ recruiter.email }}</p>
+  <p>
+    <a routerLink="/recruiters/edit/{{recruiter.id}}">Edit</a>
+    <a href="javascript:void(0)" (click)="onDelete()">Delete</a>
+  </p>
+  <a routerLink="/recruiters"><p>Go back to list</p></a>
+</section>
+
+<div [ngClass]="(confirmDeleteDialog)?'show':'hide'" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete {{ recruiter.username }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete {{ recruiter.username }}?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+        <button type="button" class="btn btn-secondary" (click)="hideDialog()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
