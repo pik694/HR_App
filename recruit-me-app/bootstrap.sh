@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION=0.1.0-SNAPSHOT
+VERSION=0.2.0-SNAPSHOT
 
 APP_CONTAINER_MASTER=recruit-me
 APP_IMAGE_MASTER=recruit-me
