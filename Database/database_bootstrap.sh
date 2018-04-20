@@ -1,8 +1,7 @@
 #!/bin/bash
 
 DB_CONTAINER=recruit-me-db
-DB_IMAGE=recruit-me-db:0.1.0
-DB_VOLUME=recruit-me-db-volume
+DB_IMAGE=recruit-me-db:${CURR_VERSION}
 
 
 docker ps -aqf "name=${DB_CONTAINER}" | xargs docker stop | xargs docker rm
