@@ -3,16 +3,17 @@
 CONTAINER_NAME="recruit-me-app"
 IMAGE_NAME="recruit-me-app"
 
-if [ "$CURR_BRANCH" -ne "master" ]; then
+if [ "$CURR_BRANCH" != "master" ]; then
     CONTAINER_NAME="${CONTAINER_NAME}-rc"
     IMAGE_NAME="${IMAGE_NAME}-rc"
 fi
 
-cp target/recruit-me-app-*.jar target/recruit-me-app-${CURR_VERSION}.jar
+
+cp ./target/recruit-me-app-*.jar ./target/recruit-me-app-${CURR_VERSION}.jar
 cp -r ../recruit-me-web/dist ./target/web_app
 
 docker ps -aqf "name=${CONTAINER_NAME}" | xargs docker stop | xargs docker rm
-docker rmi ${IMAGE_NAME}
+docker rmi ${IMAGE_NAME}:${CURR_VERSION}
 docker build -t ${IMAGE_NAME}:${CURR_VERSION} --build-arg JAR_FILE=recruit-me-app-${CURR_VERSION}.jar .
 
 
