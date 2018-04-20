@@ -1,14 +1,9 @@
-FROM java:8
-#FROM nginx
+FROM recruit-me-template:1.0
 
 ARG JAR_FILE
 
-RUN apt-get update
-RUN apt-get -y install nginx
-
 ADD target/${JAR_FILE} /usr/share/recruit-me/recruit-me.jar
 ADD target/web_app/ /var/www/html/
-RUN rm -v /etc/nginx/nginx.conf
 ADD nginx.conf /etc/nginx/
 
 EXPOSE 80 8080
