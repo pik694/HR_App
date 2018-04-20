@@ -14,7 +14,7 @@
     <build>
       <resources>
         <resource>
-          <directory>target/webapp</directory>
+          <directory>dist</directory>
         </resource>
       </resources>
       <plugins>
