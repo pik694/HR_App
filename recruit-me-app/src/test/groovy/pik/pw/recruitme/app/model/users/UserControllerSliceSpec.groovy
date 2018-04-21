@@ -15,7 +15,7 @@ import spock.lang.Specification
 import spock.mock.DetachedMockFactory
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
@@ -92,7 +92,7 @@ class UserControllerSliceSpec extends Specification implements SampleUsers {
 
         when: "I go add /users/{id}  and add user"
 
-        ResultActions addUser = mockMvc.perform(put("/users/{id}", smith.id).
+        ResultActions addUser = mockMvc.perform(post("/users/{id}", smith.id).
                 contentType(MediaType.APPLICATION_JSON).
                 content(asJsonString(smith)))
         .andExpect(status().isOk())
