@@ -1,7 +1,5 @@
 package pik.pw.recruitme.app.model.users;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +9,9 @@ import pik.pw.recruitme.app.model.users.dto.UserDTO;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:80")
 public class UserController {
 
     private UserFacade userFacade;
-
-    String hello = "Hello World";
 
     public UserController(UserFacade userFacade) {
         this.userFacade = userFacade;
@@ -33,21 +28,40 @@ public class UserController {
         return userFacade.show(id);
     }
 
+    @PostMapping("/users")
+    void addUser(@RequestBody UserDTO userDTO){
 
-    @DeleteMapping("/users/{id}")
-    ResponseEntity<?> deleteUser(@PathVariable int id){
+        userFacade.add(userDTO);
+    }
 
-        userFacade.delete(id);
+    @PostMapping("/users/{id}")
+    ResponseEntity<?> addUser(){
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    @PutMapping("/users")
+    ResponseEntity<?> updateUsers(){
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping("/users/{id}")
-    UserDTO updateUser(@PathVariable("id") int id, @RequestBody UserDTO userDTO){
+    void updateUser(@RequestBody UserDTO userDTO){
+        userFacade.add(userDTO);
+    }
 
-      return userFacade.add(userDTO);
+
+    @DeleteMapping("/users/{id}")
+    void deleteUser(@PathVariable int id){
+
+        userFacade.delete(id);
 
     }
+
+    @DeleteMapping("/users")
+    ResponseEntity<?> deleteUsers(@PathVariable int id){
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
 
 
 
