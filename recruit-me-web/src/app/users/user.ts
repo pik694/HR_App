@@ -1,4 +1,4 @@
-export class Recruiter {
+export class User {
     constructor(id: Number = null, username: string = null,
                 email: string = null, firstName: string = null, lastName: string = null) {
         this.id = id;

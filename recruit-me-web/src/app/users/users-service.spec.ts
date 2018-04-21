@@ -1,26 +1,26 @@
 import {TestBed, inject, getTestBed} from '@angular/core/testing';
 
-import {RecruitersService} from './recruiters.service';
+import {UsersService} from './users.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {HttpClientModule} from '@angular/common/http';
-import {Recruiter} from './recruiter';
+import {User} from './user';
 
-describe('RecruitersService', () => {
+describe('UsersService', () => {
 
     let injector: TestBed;
-    let service: RecruitersService;
+    let service: UsersService;
     let httpMock: HttpTestingController;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [RecruitersService],
+            providers: [UsersService],
             imports: [
                 HttpClientModule,
                 HttpClientTestingModule
             ]
         });
         injector = getTestBed();
-        service = injector.get(RecruitersService);
+        service = injector.get(UsersService);
         httpMock = injector.get(HttpTestingController);
     });
 
@@ -28,20 +28,20 @@ describe('RecruitersService', () => {
         httpMock.verify();
     });
 
-    it('should be created', inject([RecruitersService], (Rservice: RecruitersService) => {
+    it('should be created', inject([UsersService], (Rservice: UsersService) => {
         expect(Rservice).toBeTruthy();
     }));
 
-    it('should get all recruiters', () => {
+    it('should get all users', () => {
         const dummyRecruiters = [
-            new Recruiter(1, 'bob'),
-            new Recruiter(2, 'john'),
-            new Recruiter(3, 'recr', 'recr@recruiters.com')
+            new User(1, 'bob'),
+            new User(2, 'john'),
+            new User(3, 'recr', 'recr@users.com')
         ];
 
-        service.getRecruiters().subscribe(recruiters => {
-            expect(recruiters.length).toBe(3);
-            expect(recruiters).toEqual(dummyRecruiters);
+        service.getUsers().subscribe(users => {
+            expect(users.length).toBe(3);
+            expect(users).toEqual(dummyRecruiters);
         });
 
         const req = httpMock.expectOne(`${service.API_URL}`);
@@ -49,10 +49,10 @@ describe('RecruitersService', () => {
         req.flush(dummyRecruiters);
     });
 
-    it('should get single recruiter', () => {
-        const john = new Recruiter(2, 'john');
+    it('should get single user', () => {
+        const john = new User(2, 'john');
 
-        service.getRecruiter(john.id).subscribe(recruiter => {
+        service.getUser(john.id).subscribe(recruiter => {
             expect(recruiter).toEqual(john);
         });
 

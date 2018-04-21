@@ -1,11 +1,11 @@
 <section class="model-details">
-    <h3>{{ recruiter.username }}</h3>
-    <p>First Name: {{ recruiter.firstName }}</p>
-    <p>Last Name: {{ recruiter.lastName }}</p>
-    <p>E-mail: {{ recruiter.email }}</p>
+    <h3>{{ user.username }}</h3>
+    <p>First Name: {{ user.firstName }}</p>
+    <p>Last Name: {{ user.lastName }}</p>
+    <p>E-mail: {{ user.email }}</p>
     <div class="container">
         <div class="row">
-            <a routerLink="/recruiters/edit/{{recruiter.id}}" class="btn btn-primary a-btn-slide-text">
+            <a routerLink="/users/edit/{{user.id}}" class="btn btn-primary a-btn-slide-text">
                 <span><strong>Edit</strong></span>
             </a>
             <a href="javascript:void(0)" class="btn btn-danger a-btn-slide-text" data-toggle="modal"
@@ -14,7 +14,7 @@
             </a>
         </div>
     </div>
-    <a routerLink="/recruiters"><p>Go back to list</p></a>
+    <a routerLink="/users"><p>Go back to list</p></a>
 </section>
 
 <!-- Modal -->
@@ -28,11 +28,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete {{ recruiter.username }}?
+                Are you sure you want to delete {{ user.username }}?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteRecruiter()">Delete
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteUser()">Delete
                 </button>
             </div>
         </div>

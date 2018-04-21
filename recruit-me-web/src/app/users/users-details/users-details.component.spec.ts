@@ -1,17 +1,17 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {RecruitersDetailsComponent} from './recruiters-details.component';
+import {RecruitersDetailsComponent} from './users-details.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {RecruitersService} from '../recruiters.service';
+import {UsersService} from '../users.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 
-describe('RecruitersDetailsComponent', () => {
+describe('UsersDetailsComponent', () => {
     let component: RecruitersDetailsComponent;
     let fixture: ComponentFixture<RecruitersDetailsComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            providers: [RecruitersService, HttpClient],
+            providers: [UsersService, HttpClient],
             imports: [RouterTestingModule, HttpClientModule],
             declarations: [RecruitersDetailsComponent]
         })

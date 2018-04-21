@@ -6,8 +6,8 @@ const appRoutes: Routes = [
     // { path: 'applicants', component: ApplicantsListComponent },
 
     {
-        path: 'recruiters',
-        loadChildren: './recruiters/recruiters.module#RecruitersModule'
+        path: 'users',
+        loadChildren: './users/users.module#UsersModule'
     },
 
     {path: '**', component: PageNotFoundComponent}

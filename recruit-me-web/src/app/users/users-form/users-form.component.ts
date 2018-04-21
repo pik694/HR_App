@@ -1,23 +1,23 @@
 import {Component, OnInit} from '@angular/core';
-import {Recruiter} from '../recruiter';
-import {RecruitersService} from '../recruiters.service';
+import {User} from '../user';
+import {UsersService} from '../users.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {routes} from '../../routes';
 import {isUndefined} from 'util';
 
 @Component({
-    selector: 'app-recruiters-form',
-    templateUrl: './recruiters-form.component.html',
-    styleUrls: ['./recruiters-form.component.css']
+    selector: 'app-users-form',
+    templateUrl: './users-form.component.html',
+    styleUrls: ['./users-form.component.css']
 })
-export class RecruitersFormComponent implements OnInit {
+export class UsersFormComponent implements OnInit {
 
-    constructor(private recruiterService: RecruitersService,
+    constructor(private recruiterService: UsersService,
                 private router: Router,
                 private route: ActivatedRoute) {
     }
 
-    model: Recruiter;
+    model: User;
     editing: boolean;
     errorMsg: string;
 
@@ -27,10 +27,10 @@ export class RecruitersFormComponent implements OnInit {
             id = params['id'];
             if (!isUndefined(id)) {
                 this.editing = true;
-                this.recruiterService.getRecruiter(id).subscribe(recruiter => this.model = recruiter);
+                this.recruiterService.getUser(id).subscribe(recruiter => this.model = recruiter);
             } else {
                 this.editing = false;
-                this.model = new Recruiter();
+                this.model = new User();
             }
         });
 
@@ -38,7 +38,7 @@ export class RecruitersFormComponent implements OnInit {
 
     saveRecruiter() {
         if (this.editing) {
-            this.recruiterService.updateRecruiter(this.model).subscribe(
+            this.recruiterService.updateUser(this.model).subscribe(
                 success => {
                     this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + '/' + this.model.id);
                 },
