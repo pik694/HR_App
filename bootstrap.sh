@@ -17,7 +17,7 @@ export CURR_VERSION
 
 ## Build and deploy frontend and backend
 
-mvn clean deploy
+mvn clean package
 
 if [ $? -ne 0 ] ; then
     exit 1
