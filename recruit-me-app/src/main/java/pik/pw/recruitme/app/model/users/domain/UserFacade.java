@@ -7,7 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import pik.pw.recruitme.app.model.users.dto.UserDTO;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static java.util.Objects.requireNonNull;
 
@@ -49,11 +51,16 @@ public class UserFacade {
 
     }
 
-    public Page<UserDTO> findAll(Pageable pageable) {
-        requireNonNull(pageable);
-        return repository
-                .findAll(pageable)
-                .map(User::toDTO);
+    public List<UserDTO> findAll() {
+//        requireNonNull(pageable);
+
+        List<UserDTO> dtos = new ArrayList<>();
+
+        for (User user: repository.findAll()) {
+            dtos.add(user.toDTO());
+        }
+
+        return dtos;
     }
 
 }

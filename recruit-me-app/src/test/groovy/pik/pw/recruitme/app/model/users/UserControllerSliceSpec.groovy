@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.ResultActions
 import pik.pw.recruitme.app.model.users.domain.UserFacade
 import pik.pw.recruitme.app.infrastructure.mvc.ObjectNotFoundException
 import pik.pw.recruitme.app.model.users.domain.SampleUsers
+import pik.pw.recruitme.app.model.users.dto.UserDTO
 import spock.lang.Specification
 import spock.mock.DetachedMockFactory
 
@@ -54,7 +55,7 @@ class UserControllerSliceSpec extends Specification implements SampleUsers {
 
     def "should get recruiters"() {
         given: 'inventory has two recruiters'
-        userFacade.findAll(_) >> { Pageable pageable -> new PageImpl([smith, jones], pageable, 2) }
+        userFacade.findAll() >> [smith,jones]
 
         when: 'I go to /recruiters'
         ResultActions getRecruiters = mockMvc.perform(get("/users"))
@@ -62,12 +63,10 @@ class UserControllerSliceSpec extends Specification implements SampleUsers {
         then: 'I see list of those recruiters'
         getRecruiters.andExpect(status().isOk())
                 .andExpect(content().json("""
-                            {
-                                "content": [
+                               [
                                     {"id":$smith.id, "firstName":"$smith.firstName", "lastName":"$smith.lastName"},
                                     {"id":$jones.id, "firstName":"$jones.firstName", "lastName":"$jones.lastName"}
-                                ]
-                            }""", false))
+                               ]""", false))
     }
 
     def "should get recruiter"() {
