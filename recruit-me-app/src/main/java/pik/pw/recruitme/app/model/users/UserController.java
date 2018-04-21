@@ -13,8 +13,6 @@ public class UserController {
 
     private UserFacade userFacade;
 
-    String hello = "Hello World";
-
     public UserController(UserFacade userFacade) {
         this.userFacade = userFacade;
     }
@@ -30,21 +28,40 @@ public class UserController {
         return userFacade.show(id);
     }
 
+    @PostMapping("/users")
+    void addUser(@RequestBody UserDTO userDTO){
+
+        userFacade.add(userDTO);
+    }
+
+    @PostMapping("/users/{id}")
+    ResponseEntity<?> addUser(){
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @PutMapping("/users")
+    ResponseEntity<?> updateUsers(){
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @PutMapping("/users/{id}")
+    void updateUser(@RequestBody UserDTO userDTO){
+        userFacade.add(userDTO);
+    }
+
 
     @DeleteMapping("/users/{id}")
-    ResponseEntity<?> deleteUser(@PathVariable int id){
+    void deleteUser(@PathVariable int id){
 
         userFacade.delete(id);
 
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.POST)
-    UserDTO updateUser(@PathVariable("id") int id, @RequestBody UserDTO userDTO){
-
-      return userFacade.add(userDTO);
-
+    @DeleteMapping("/users")
+    ResponseEntity<?> deleteUsers(@PathVariable int id){
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+
 
 
 
