@@ -43,10 +43,12 @@ public class UserController {
     }
 
     @PutMapping("/users/{id}")
-    @ResponseBody
     UserDTO updateUser(@PathVariable("id") int id, @RequestBody UserDTO userDTO){
-        return userFacade.add(userDTO);
+
+      return userFacade.add(userDTO);
+
     }
+
 
 
 
