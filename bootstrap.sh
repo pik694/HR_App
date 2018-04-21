@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CURR_VERSION="0.2.0"
+CURR_VERSION="0.3.0"
 
 
 if [ $# -eq 1 ] ; then
