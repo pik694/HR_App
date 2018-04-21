@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.Repository;
 import pik.pw.recruitme.app.infrastructure.mvc.ObjectNotFoundException;
 
+import java.util.List;
+
 interface UserRepository extends Repository<User, Integer> {
 
     User save(User user);
@@ -13,7 +15,7 @@ interface UserRepository extends Repository<User, Integer> {
 
     void deleteById(Integer id);
 
-    Page<User> findAll(Pageable pageable);
+    List<User> findAll();
 
     default User findByIdOrThrow(Integer id) {
         User user = findById(id);

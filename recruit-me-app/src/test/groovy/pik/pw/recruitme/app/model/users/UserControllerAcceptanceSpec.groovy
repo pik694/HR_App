@@ -29,12 +29,10 @@ class UserControllerAcceptanceSpec extends IntegrationSpec implements SampleUser
         getusers
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
-                {
-                    "content":[
+                    [
                         {"id":$smith.id,"firstName":"$smith.firstName","lastName":"$smith.lastName","username":"$smith.username","email":"$smith.email"},
                         {"id":$jones.id,"firstName":"$jones.firstName","lastName":"$jones.lastName","username":"$jones.username","email":"$jones.email"}
-                    ]
-                }"""))
+                    ]"""))
 
         when: "I go to /users/"
         ResultActions getRecruiter = mockMvc.perform(get("/users/$jones.id"))

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import pik.pw.recruitme.app.model.users.domain.UserFacade;
 import pik.pw.recruitme.app.model.users.dto.UserDTO;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:80")
 public class UserController {
@@ -22,8 +24,8 @@ public class UserController {
 
 
     @GetMapping("/users")
-    Page<UserDTO> getRecruiters(Pageable pageable) {
-        return userFacade.findAll(pageable);
+    List<UserDTO> getRecruiters() {
+        return userFacade.findAll();
     }
 
     @GetMapping("/users/{id}")

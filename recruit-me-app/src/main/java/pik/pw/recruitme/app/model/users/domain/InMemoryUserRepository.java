@@ -5,6 +5,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static java.util.Objects.requireNonNull;
@@ -34,9 +35,9 @@ class InMemoryUserRepository implements UserRepository {
     }
 
 
-    public Page<User> findAll(Pageable pageable) {
+    public List<User> findAll() {
 
-        return new PageImpl<>(new ArrayList<>(map.values()), pageable, map.size());
+        return new ArrayList<>(map.values());
     }
 
 

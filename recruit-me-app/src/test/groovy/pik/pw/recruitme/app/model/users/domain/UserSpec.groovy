@@ -37,7 +37,7 @@ class UserSpec extends Specification implements SampleUsers {
         facade.add(smith)
         facade.add(jones)
         when: "We request users' list"
-        Page<UserDTO> foundRecruiters = facade.findAll(new PageRequest(0, 10))
+        List<UserDTO> foundRecruiters = facade.findAll()
         then: "System returns both users"
         foundRecruiters.contains(smith)
         foundRecruiters.contains(jones)
