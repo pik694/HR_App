@@ -13,10 +13,7 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
     imports: [
         CommonModule,
         RecruitersRoutingModule,
-        SharedModule,
-        HttpClientInMemoryWebApiModule.forRoot(
-            InMemoryDataService, {dataEncapsulation: false}
-        )
+        SharedModule
     ],
     declarations: [
         RecruitersDetailsComponent,
