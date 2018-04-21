@@ -13,8 +13,10 @@
                        [headerHeight]='50'
                        [footerHeight]='50'
                        [rowHeight]='"auto"'>
-
         </ngx-datatable>
+        <ng-template #linkTemplate let-row="row" let-value="value" let-i="index">
+            <a routerLink="/users/{{row.id}}"> {{ value }} </a>
+        </ng-template>
         <h2 *ngIf="!rows && !errorMsg" class="text-center">No users currently exist</h2>
         <h2 *ngIf="errorMsg" class="text-center">{{ errorMsg }}</h2>
     </section>

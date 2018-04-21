@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {User} from '../user';
 import {UsersService} from '../users.service';
 import {Router} from '@angular/router';
+import {routes} from '../../routes';
 
 @Component({
     selector: 'app-users-list',
@@ -9,8 +10,9 @@ import {Router} from '@angular/router';
     styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent implements OnInit {
+    @ViewChild('linkTemplate') linkTemplate: TemplateRef<any>;
 
-    constructor(private usersService: UsersService) {
+    constructor(private usersService: UsersService, private router: Router) {
     }
 
     rows: Array<any>;
@@ -19,11 +21,11 @@ export class UsersListComponent implements OnInit {
 
     static recruiterToRow(recruiter: User) {
         return {
-            id: '<a href="/users/' + recruiter.id + '">' + recruiter.id + '</a>',
-            username: '<a href="/users/' + recruiter.id + '">' + recruiter.username + '</a>',
-            email: '<a href="/users/' + recruiter.id + '">' + recruiter.email + '</a>',
-            firstName: '<a href="/users/' + recruiter.id + '">' + recruiter.firstName + '</a>',
-            lastName: '<a href="/users/' + recruiter.id + '">' + recruiter.lastName + '</a>'
+            id: recruiter.id,
+            username: recruiter.username,
+            email: recruiter.email,
+            firstName: recruiter.firstName,
+            lastName: recruiter.lastName,
         };
     }
 
@@ -31,11 +33,11 @@ export class UsersListComponent implements OnInit {
         this.refreshList();
 
         this.columns = [
-            {prop: 'id', name: 'Id'},
-            {prop: 'username', name: 'Username'},
-            {prop: 'email', name: 'E-mail'},
-            {prop: 'firstName', name: 'First Name'},
-            {prop: 'lastName', name: 'Last Name'},
+            {prop: 'id', name: 'Id', cellTemplate: this.linkTemplate},
+            {prop: 'username', name: 'Username', cellTemplate: this.linkTemplate},
+            {prop: 'email', name: 'E-mail', cellTemplate: this.linkTemplate},
+            {prop: 'firstName', name: 'First Name', cellTemplate: this.linkTemplate},
+            {prop: 'lastName', name: 'Last Name', cellTemplate: this.linkTemplate},
         ];
 
     }
@@ -55,4 +57,8 @@ export class UsersListComponent implements OnInit {
         );
     }
 
+    viewDetails(event) {
+        console.log(event);
+        this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + '/' + event.row.id);
+    }
 }

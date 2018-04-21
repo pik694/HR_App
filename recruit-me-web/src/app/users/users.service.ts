@@ -31,7 +31,6 @@ export class UsersService {
     }
 
     createRecruiter(recruiter: User): Observable<any> {
-        console.log('Creating a user!');
         return this.http.post(`${this.API_URL}`, recruiter)
             .pipe(catchError(UsersService.formatErrors));
     }

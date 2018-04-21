@@ -16,7 +16,7 @@ import {SharedModule} from '../shared/shared.module';
     declarations: [
         UsersDetailsComponent,
         UsersListComponent,
-        UsersFormComponent
+        UsersFormComponent,
     ],
     providers: [UsersService],
 })
