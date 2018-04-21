@@ -43,7 +43,7 @@ export class RecruitersFormComponent implements OnInit {
                     this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + '/' + this.model.id);
                 },
                 error => {
-                    this.errorMsg = "Could not submit changes to the server";
+                    this.errorMsg = 'Could not submit changes to the server';
                 }
             );
         } else {
@@ -52,7 +52,7 @@ export class RecruitersFormComponent implements OnInit {
                     this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + '/' + this.model.id);
                 },
                 error => {
-                    this.errorMsg = "Could not submit changes to the server";
+                    this.errorMsg = 'Could not submit changes to the server';
                 }
             );
         }

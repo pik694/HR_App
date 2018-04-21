@@ -1,4 +1,4 @@
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+import {InMemoryDbService} from 'angular-in-memory-web-api';
 import {Recruiter} from './recruiters/recruiter';
 
 export class InMemoryDataService implements InMemoryDbService {

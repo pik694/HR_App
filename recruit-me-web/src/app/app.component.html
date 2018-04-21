@@ -1,38 +1,38 @@
 <div id="wrapper" class="toggled">
 
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a href="/">
-          HR App
-        </a>
-      </li>
-      <li>
-        <a href="#">Open Postings</a>
-      </li>
-      <li>
-        <a href="#">Job Positions</a>
-      </li>
-      <li>
-        <a routerLink="/recruiters">Recruiters</a>
-      </li>
-      <li>
-        <a href="#">Applicants</a>
-      </li>
-    </ul>
-    <section class="tools-links">
-      <a href="http://jenkins.pik10.ii.pw.edu.pl"><img [src]="jenkinsImg" class="icon"></a>
-      <a href="http://artifactory.pik10.ii.pw.edu.pl"><img [src]="jfrogImg" class="icon"></a>
-    </section>
-  </div>
-  <!-- /#sidebar-wrapper -->
-
-  <!-- Page Content -->
-  <div id="page-content-wrapper">
-    <div class="container-fluid main-content">
-      <router-outlet></router-outlet>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="/">
+                    HR App
+                </a>
+            </li>
+            <li>
+                <a href="#">Open Postings</a>
+            </li>
+            <li>
+                <a href="#">Job Positions</a>
+            </li>
+            <li>
+                <a routerLink="/recruiters">Recruiters</a>
+            </li>
+            <li>
+                <a href="#">Applicants</a>
+            </li>
+        </ul>
+        <section class="tools-links">
+            <a href="http://jenkins.pik10.ii.pw.edu.pl"><img [src]="jenkinsImg" class="icon"></a>
+            <a href="http://artifactory.pik10.ii.pw.edu.pl"><img [src]="jfrogImg" class="icon"></a>
+        </section>
     </div>
-  </div>
-  <!-- /#page-content-wrapper -->
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid main-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 </div>

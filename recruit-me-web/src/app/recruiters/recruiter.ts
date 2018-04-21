@@ -7,6 +7,7 @@ export class Recruiter {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
     id: Number;
     username: string;
     email: string;

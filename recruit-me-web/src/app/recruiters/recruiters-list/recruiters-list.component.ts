@@ -1,35 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Recruiter} from '../recruiter';
 import {RecruitersService} from '../recruiters.service';
-import { Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-recruiters-list',
-  templateUrl: './recruiters-list.component.html',
-  styleUrls: ['./recruiters-list.component.css']
+    selector: 'app-recruiters-list',
+    templateUrl: './recruiters-list.component.html',
+    styleUrls: ['./recruiters-list.component.css']
 })
 export class RecruitersListComponent implements OnInit {
 
-  constructor(private recruitersService: RecruitersService) {
-  }
-
-  rows: Array<any>;
-  columns: Array<any>;
-  errorMsg: string;
-
-    ngOnInit() {
-        this.refreshList();
-        //this.router.events.subscribe( e => this.refreshList() );
-
-        this.columns = [
-            { prop: 'id', name: 'Id' },
-            { prop: 'username', name: 'Username'},
-            { prop: 'email', name: 'E-mail'},
-            { prop: 'firstName', name: 'First Name'},
-            { prop: 'lastName', name: 'Last Name' },
-        ];
-
+    constructor(private recruitersService: RecruitersService) {
     }
+
+    rows: Array<any>;
+    columns: Array<any>;
+    errorMsg: string;
 
     static recruiterToRow(recruiter: Recruiter) {
         return {
@@ -41,17 +27,30 @@ export class RecruitersListComponent implements OnInit {
         };
     }
 
+    ngOnInit() {
+        this.refreshList();
+
+        this.columns = [
+            {prop: 'id', name: 'Id'},
+            {prop: 'username', name: 'Username'},
+            {prop: 'email', name: 'E-mail'},
+            {prop: 'firstName', name: 'First Name'},
+            {prop: 'lastName', name: 'Last Name'},
+        ];
+
+    }
+
     refreshList() {
         this.recruitersService.getRecruiters().subscribe(
             recruiters => {
                 this.rows = [];
-                recruiters.forEach( (recruiter) => {
+                recruiters.forEach((recruiter) => {
                     this.rows.push(RecruitersListComponent.recruiterToRow(recruiter));
                 });
                 this.errorMsg = null;
             },
             error => {
-                this.errorMsg = "Could not connect to the server.";
+                this.errorMsg = 'Could not connect to the server.';
             }
         );
     }
