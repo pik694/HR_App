@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  jenkinsImg = "../assets/jenkins.png";
-  jfrogImg = "../assets/jfrog.png";
+  jenkinsImg = '../assets/jenkins.png';
+  jfrogImg = '../assets/jfrog.png';
   title = 'app';
 }

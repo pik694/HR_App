@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Recruiter} from "../recruiter";
-import {RecruitersService} from "../recruiters.service";
-import { Router, ActivatedRoute } from "@angular/router";
-import {routes} from "../../routes";
-import {isUndefined} from "util";
+import {Recruiter} from '../recruiter';
+import {RecruitersService} from '../recruiters.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import {routes} from '../../routes';
+import {isUndefined} from 'util';
 
 @Component({
   selector: 'app-recruiters-form',
@@ -13,7 +13,7 @@ import {isUndefined} from "util";
 export class RecruitersFormComponent implements OnInit {
 
   constructor(
-      private recruiterService : RecruitersService,
+      private recruiterService: RecruitersService,
       private router: Router,
       private route: ActivatedRoute
   ) { }
@@ -28,8 +28,7 @@ export class RecruitersFormComponent implements OnInit {
       if (!isUndefined(id)) {
           this.editing = true;
           this.recruiterService.getRecruiter(id).subscribe( recruiter => this.model = recruiter );
-      }
-      else {
+      } else {
           this.editing = false;
           this.model = new Recruiter();
       }
@@ -40,13 +39,12 @@ export class RecruitersFormComponent implements OnInit {
   saveRecruiter() {
     if (this.editing) {
       this.recruiterService.updateRecruiter(this.model).subscribe( nothing => {
-          this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + "/" + this.model.id);
+          this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + '/' + this.model.id);
       });
-    }
-    else {
+    } else {
       this.recruiterService.createRecruiter(this.model).subscribe( recruiter => {
-          this.model = recruiter
-          this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + "/" + this.model.id);
+          this.model = recruiter;
+          this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + '/' + this.model.id);
       });
     }
   }

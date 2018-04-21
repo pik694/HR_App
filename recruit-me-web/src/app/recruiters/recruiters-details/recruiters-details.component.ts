@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Recruiter} from "../recruiter";
-import {ActivatedRoute, ParamMap, Params, Router} from "@angular/router";
-import {RecruitersService} from "../recruiters.service";
-import {routes} from "../../routes";
+import {Recruiter} from '../recruiter';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {RecruitersService} from '../recruiters.service';
+import {routes} from '../../routes';
 
 @Component({
   selector: 'app-recruiters-details',
@@ -16,12 +16,12 @@ export class RecruitersDetailsComponent implements OnInit {
               private service: RecruitersService) { }
 
   recruiter: Recruiter;
-  confirmDeleteDialog: boolean = false;
+  confirmDeleteDialog = false;
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
       if (params['id'] !== undefined) {
-          let id = +params['id'];
+          const id = +params['id'];
           this.service.getRecruiter(id).subscribe( recruiter => this.recruiter = recruiter );
       }
     });
@@ -36,10 +36,10 @@ export class RecruitersDetailsComponent implements OnInit {
         this.confirmDeleteDialog = false;
     }
 
-    delete() {
+    deleteRecruiter() {
       this.service.deleteRecruiter(this.recruiter).subscribe( nothing => {
         this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE);
-      })
+      });
     }
 }
 

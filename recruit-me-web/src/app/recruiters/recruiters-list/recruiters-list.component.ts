@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Recruiter} from "../recruiter";
-import {RecruitersService} from "../recruiters.service";
-import {NavigationEnd, Router} from "@angular/router";
+import {Recruiter} from '../recruiter';
+import {RecruitersService} from '../recruiters.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-recruiters-list',
@@ -10,11 +10,10 @@ import {NavigationEnd, Router} from "@angular/router";
 })
 export class RecruitersListComponent implements OnInit {
 
-  constructor(private recruitersService : RecruitersService,
-              private router: Router) { }
+  constructor(private recruitersService: RecruitersService) { }
 
-  rows: Array<any>
-  columns: Array<any>
+  rows: Array<any>;
+  columns: Array<any>;
 
     ngOnInit() {
         this.refreshList();
@@ -23,21 +22,21 @@ export class RecruitersListComponent implements OnInit {
         this.columns = [
             { prop: 'id', name: 'Id' },
             { prop: 'username', name: 'Username'},
-            { prop: 'email', name: "E-mail"},
+            { prop: 'email', name: 'E-mail'},
             { prop: 'firstName', name: 'First Name'},
             { prop: 'lastName', name: 'Last Name' },
         ];
 
     }
 
-    recruiterToRow(recruiter: Recruiter) {
+    static recruiterToRow(recruiter: Recruiter) {
         return {
             id: '<a href="/recruiters/' + recruiter.id + '">' + recruiter.id + '</a>',
             username: '<a href="/recruiters/' + recruiter.id + '">' + recruiter.username + '</a>',
             email: '<a href="/recruiters/' + recruiter.id + '">' + recruiter.email + '</a>',
             firstName: '<a href="/recruiters/' + recruiter.id + '">' + recruiter.firstName + '</a>',
             lastName: '<a href="/recruiters/' + recruiter.id + '">' + recruiter.lastName + '</a>'
-        }
+        };
     }
 
     refreshList() {
@@ -45,7 +44,7 @@ export class RecruitersListComponent implements OnInit {
             recruiters => {
                 this.rows = [];
                 recruiters.forEach( (recruiter) => {
-                    this.rows.push(this.recruiterToRow(recruiter));
+                    this.rows.push(RecruitersListComponent.recruiterToRow(recruiter));
                 });
             }
         );

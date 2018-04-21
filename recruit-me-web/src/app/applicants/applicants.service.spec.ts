@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ApplicantsService } from './applicants.service';
-import {NgxDatatableModule} from "@swimlane/ngx-datatable";
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 describe('ApplicantsService', () => {
   beforeEach(() => {

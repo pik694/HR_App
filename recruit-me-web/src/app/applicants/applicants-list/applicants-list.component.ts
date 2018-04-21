@@ -9,8 +9,8 @@ export class ApplicantsListComponent implements OnInit {
 
   constructor() { }
 
-  rows : Array<any>;
-  columns : Array<any>;
+  rows: Array<any>;
+  columns: Array<any>;
 
   ngOnInit() {
     this.columns = [

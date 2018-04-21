@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RecruitersListComponent } from './recruiters-list.component';
-import {NgxDatatableModule} from "@swimlane/ngx-datatable";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {RecruitersService} from "../recruiters.service";
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {RecruitersService} from '../recruiters.service';
 
 describe('RecruitersListComponent', () => {
   let component: RecruitersListComponent;
