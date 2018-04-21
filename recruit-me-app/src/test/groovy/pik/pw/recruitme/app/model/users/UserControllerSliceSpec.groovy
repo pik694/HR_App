@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.ResultActions
 import pik.pw.recruitme.app.model.users.domain.UserFacade
 import pik.pw.recruitme.app.infrastructure.mvc.ObjectNotFoundException
-import pik.pw.recruitme.app.model.users.domain.SampleRecruiters
+import pik.pw.recruitme.app.model.users.domain.SampleUsers
 import spock.lang.Specification
 import spock.mock.DetachedMockFactory
 
@@ -19,11 +19,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @WebMvcTest([UserController, UserTestConfig])
-class UserControllerSliceSpec extends Specification implements SampleRecruiters {
+class UserControllerSliceSpec extends Specification implements SampleUsers {
 
     @TestConfiguration
     static class UserTestConfig {
-        DetachedMockFactory detachedMockFactory = new DetachedMockFactory();
+        DetachedMockFactory detachedMockFactory = new DetachedMockFactory()
 
         @Bean
         UserFacade recruiterFacade() {
@@ -32,7 +32,7 @@ class UserControllerSliceSpec extends Specification implements SampleRecruiters 
     }
 
     @Autowired
-    UserFacade recruiterFacade
+    UserFacade userFacade
 
     @Autowired
     MockMvc mockMvc
@@ -40,7 +40,7 @@ class UserControllerSliceSpec extends Specification implements SampleRecruiters 
     def "asking for non existing recruiter should return 404"() {
         given: "there is no users with id I want"
         int nonExistingId = 1
-        recruiterFacade.show(nonExistingId) >> { throw new ObjectNotFoundException("User with id 1") }
+        userFacade.show(nonExistingId) >> { throw new ObjectNotFoundException("User with id 1") }
 
         expect: "I get 404 and a message"
         mockMvc.perform(get("/users/$nonExistingId"))
@@ -54,10 +54,10 @@ class UserControllerSliceSpec extends Specification implements SampleRecruiters 
 
     def "should get recruiters"() {
         given: 'inventory has two recruiters'
-        recruiterFacade.findAll(_) >> { Pageable pageable -> new PageImpl([smith, jones], pageable, 2) }
+        userFacade.findAll(_) >> { Pageable pageable -> new PageImpl([smith, jones], pageable, 2) }
 
         when: 'I go to /recruiters'
-        ResultActions getRecruiters = mockMvc.perform(get("/recruiters"))
+        ResultActions getRecruiters = mockMvc.perform(get("/users"))
 
         then: 'I see list of those recruiters'
         getRecruiters.andExpect(status().isOk())
@@ -72,7 +72,7 @@ class UserControllerSliceSpec extends Specification implements SampleRecruiters 
 
     def "should get recruiter"() {
         given: 'inventory has the users with id 1 and the users with id 2'
-        recruiterFacade.show(smith.id) >> smith
+        userFacade.show(smith.id) >> smith
 
         when: 'I go to /users'
         ResultActions getRecruiter = mockMvc.perform(get("/users/$smith.id"))
@@ -83,4 +83,6 @@ class UserControllerSliceSpec extends Specification implements SampleRecruiters 
                                     {"id":$smith.id, "firstName":"$smith.firstName", "lastName":"$smith.lastName"},
                             """, false))
     }
+
+
 }

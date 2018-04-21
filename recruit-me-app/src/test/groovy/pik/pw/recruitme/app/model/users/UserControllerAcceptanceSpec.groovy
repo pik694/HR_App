@@ -4,29 +4,29 @@ import base.IntegrationSpec
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.ResultActions
+import pik.pw.recruitme.app.model.users.domain.SampleUsers
 import pik.pw.recruitme.app.model.users.domain.UserFacade
-import pik.pw.recruitme.app.model.users.domain.SampleRecruiters
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-class UserControllerAcceptanceSpec extends IntegrationSpec implements SampleRecruiters {
+class UserControllerAcceptanceSpec extends IntegrationSpec implements SampleUsers {
 
     @Autowired
     UserFacade userFacade
 
     @WithMockUser
-    def "Should get recruiters"() {
-        given: "Repository has two recruiters"
+    def "Should get users"() {
+        given: "Repository has two users"
         userFacade.add(smith)
         userFacade.add(jones)
 
-        when: "I go to /recruiters"
-        ResultActions getRecruiters = mockMvc.perform(get("/recruiters"))
+        when: "I go to /users"
+        ResultActions getusers = mockMvc.perform(get("/users"))
 
-        then: "I see all recruiters"
-        getRecruiters
+        then: "I see all users"
+        getusers
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                 {

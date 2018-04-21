@@ -28,9 +28,9 @@ class User {
     private String username;
 
 
-    @NotEmpty
-    @NotNull
-    private String password;
+//    @NotEmpty
+//    @NotNull
+//    private String password;
 
 
     @NotNull
@@ -50,7 +50,7 @@ class User {
         return UserDTO.builder()
                 .id(id)
                 .username(username)
-                .password(password)
+//                .password(password)
                 .firstName(name)
                 .lastName(surname)
                 .email(email)

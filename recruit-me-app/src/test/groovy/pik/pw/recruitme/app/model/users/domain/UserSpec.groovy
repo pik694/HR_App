@@ -7,7 +7,7 @@ import pik.pw.recruitme.app.infrastructure.mvc.ObjectNotFoundException
 import pik.pw.recruitme.app.model.users.dto.UserDTO
 import spock.lang.Specification
 
-class UserSpec extends Specification implements SampleRecruiters {
+class UserSpec extends Specification implements SampleUsers {
 
     UserFacade facade = new UserConfiguration().userFacade()
 
@@ -43,6 +43,7 @@ class UserSpec extends Specification implements SampleRecruiters {
         foundRecruiters.contains(jones)
     }
 
+
     def "Should throw not found exception"() {
         given: "Empty repository"
         when: "We try to find a nonexistent users "
@@ -50,5 +51,29 @@ class UserSpec extends Specification implements SampleRecruiters {
         then: "An exception will be thrown"
         thrown ObjectNotFoundException
     }
+
+    def "Should remove user"(){
+        given: "We have one recruiter"
+        facade.add(jones)
+        when: "We remove the recruiter"
+        facade.delete(jones.id)
+        facade.show(jones.id)
+        then: "There is no recruiters"
+        thrown ObjectNotFoundException
+
+    }
+
+    def "Should update user"(){
+        given: "We have some user"
+        facade.add(smith)
+
+        when: "We update some some data"
+        smith.firstName = "James"
+        facade.add(smith)
+        then: "User is updated"
+        facade.show(smith.id) == smith
+    }
+
+
 
 }

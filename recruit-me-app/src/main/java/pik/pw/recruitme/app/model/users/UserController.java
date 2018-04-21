@@ -2,10 +2,9 @@ package pik.pw.recruitme.app.model.users;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import pik.pw.recruitme.app.model.users.domain.UserFacade;
 import pik.pw.recruitme.app.model.users.dto.UserDTO;
 
@@ -21,18 +20,32 @@ public class UserController {
         this.userFacade = userFacade;
     }
 
-    @GetMapping("/hello")
-    public String getHello() {
-        return hello;
-    }
 
-    @GetMapping("recruiters")
+    @GetMapping("/users")
     Page<UserDTO> getRecruiters(Pageable pageable) {
         return userFacade.findAll(pageable);
     }
 
-    @GetMapping("users/{id}")
+    @GetMapping("/users/{id}")
     UserDTO getRecruiter(@PathVariable int id) {
         return userFacade.show(id);
     }
+
+
+    @DeleteMapping("/users/{id}")
+    ResponseEntity<?> deleteUser(@PathVariable int id){
+
+        userFacade.delete(id);
+
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping("/users/{id}")
+    @ResponseBody
+    UserDTO updateUser(@PathVariable("id") int id, @RequestBody UserDTO userDTO){
+        return userFacade.add(userDTO);
+    }
+
+
+
 }
