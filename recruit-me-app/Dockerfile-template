@@ -3,4 +3,5 @@ FROM java:8
 
 RUN apt-get update
 RUN apt-get -y install nginx
+RUN apt-get install nano
 RUN rm -v /etc/nginx/nginx.conf
