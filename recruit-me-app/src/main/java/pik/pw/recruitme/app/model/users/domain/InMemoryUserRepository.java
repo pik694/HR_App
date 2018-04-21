@@ -1,4 +1,4 @@
-package pik.pw.recruitme.app.model.recruiter.domain;
+package pik.pw.recruitme.app.model.users.domain;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -9,21 +9,21 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static java.util.Objects.requireNonNull;
 
-class InMemoryRecruiterRepository implements RecruiterRepository {
+class InMemoryUserRepository implements UserRepository {
 
-    private ConcurrentHashMap<Integer, Recruiter> map = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<Integer, User> map = new ConcurrentHashMap<>();
 
-    public Recruiter save(Recruiter recruiter) {
+    public User save(User user) {
 
-        requireNonNull(recruiter);
+        requireNonNull(user);
 
-        map.put(recruiter.toDTO().getId(), recruiter);
+        map.put(user.toDTO().getId(), user);
 
-        return recruiter;
+        return user;
 
     }
 
-    public Recruiter findById(Integer id) {
+    public User findById(Integer id) {
 
         return map.get(id);
 
@@ -34,7 +34,7 @@ class InMemoryRecruiterRepository implements RecruiterRepository {
     }
 
 
-    public Page<Recruiter> findAll(Pageable pageable) {
+    public Page<User> findAll(Pageable pageable) {
 
         return new PageImpl<>(new ArrayList<>(map.values()), pageable, map.size());
     }

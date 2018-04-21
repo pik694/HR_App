@@ -1,4 +1,4 @@
-package pik.pw.recruitme.app.model.recruiter
+package pik.pw.recruitme.app.model.users
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
@@ -8,9 +8,9 @@ import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.ResultActions
-import pik.pw.recruitme.app.model.recruiter.domain.RecruiterFacade
-import pik.pw.recruitme.app.model.recruiter.domain.RecruiterNotFoundException
-import pik.pw.recruitme.app.model.recruiter.domain.SampleRecruiters
+import pik.pw.recruitme.app.model.users.domain.UserFacade
+import pik.pw.recruitme.app.infrastructure.mvc.ObjectNotFoundException
+import pik.pw.recruitme.app.model.users.domain.SampleRecruiters
 import spock.lang.Specification
 import spock.mock.DetachedMockFactory
 
@@ -18,36 +18,36 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-@WebMvcTest([RecruiterController, RecruiterTestConfig])
-class RecruiterControllerSliceSpec extends Specification implements SampleRecruiters {
+@WebMvcTest([UserController, UserTestConfig])
+class UserControllerSliceSpec extends Specification implements SampleRecruiters {
 
     @TestConfiguration
-    static class RecruiterTestConfig {
+    static class UserTestConfig {
         DetachedMockFactory detachedMockFactory = new DetachedMockFactory();
 
         @Bean
-        RecruiterFacade recruiterFacade() {
-            return detachedMockFactory.Stub(RecruiterFacade)
+        UserFacade recruiterFacade() {
+            return detachedMockFactory.Stub(UserFacade)
         }
     }
 
     @Autowired
-    RecruiterFacade recruiterFacade
+    UserFacade recruiterFacade
 
     @Autowired
     MockMvc mockMvc
 
     def "asking for non existing recruiter should return 404"() {
-        given: "there is no recruiter with id I want"
+        given: "there is no users with id I want"
         int nonExistingId = 1
-        recruiterFacade.show(nonExistingId) >> { throw new RecruiterNotFoundException(nonExistingId) }
+        recruiterFacade.show(nonExistingId) >> { throw new ObjectNotFoundException("User with id 1") }
 
         expect: "I get 404 and a message"
-        mockMvc.perform(get("/recruiter/$nonExistingId"))
+        mockMvc.perform(get("/users/$nonExistingId"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().json("""
                     {
-                        "message": "Could not find a recruiter with id: 1"
+                        "message": "Could not find an object in database: User with id 1"
                     } """))
 
     }
@@ -64,23 +64,23 @@ class RecruiterControllerSliceSpec extends Specification implements SampleRecrui
                 .andExpect(content().json("""
                             {
                                 "content": [
-                                    {"id":$smith.id, "name":"$smith.name", "surname":"$smith.surname"},
-                                    {"id":$jones.id, "name":"$jones.name", "surname":"$jones.surname"}
+                                    {"id":$smith.id, "firstName":"$smith.firstName", "lastName":"$smith.lastName"},
+                                    {"id":$jones.id, "firstName":"$jones.firstName", "lastName":"$jones.lastName"}
                                 ]
                             }""", false))
     }
 
     def "should get recruiter"() {
-        given: 'inventory has the recruiter with id 1 and the recruiter with id 2'
+        given: 'inventory has the users with id 1 and the users with id 2'
         recruiterFacade.show(smith.id) >> smith
 
-        when: 'I go to /recruiter'
-        ResultActions getRecruiter = mockMvc.perform(get("/recruiter/$smith.id"))
+        when: 'I go to /users'
+        ResultActions getRecruiter = mockMvc.perform(get("/users/$smith.id"))
 
-        then: 'I see details of that recruiter'
+        then: 'I see details of that users'
         getRecruiter.andExpect(status().isOk())
                 .andExpect(content().json("""
-                                    {"id":$smith.id, "name":"$smith.name", "surname":"$smith.surname"},
+                                    {"id":$smith.id, "firstName":"$smith.firstName", "lastName":"$smith.lastName"},
                             """, false))
     }
 }

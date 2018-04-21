@@ -1,26 +1,26 @@
-package pik.pw.recruitme.app.model.recruiter
+package pik.pw.recruitme.app.model.users
 
 import base.IntegrationSpec
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.ResultActions
-import pik.pw.recruitme.app.model.recruiter.domain.RecruiterFacade
-import pik.pw.recruitme.app.model.recruiter.domain.SampleRecruiters
+import pik.pw.recruitme.app.model.users.domain.UserFacade
+import pik.pw.recruitme.app.model.users.domain.SampleRecruiters
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-class RecruiterControllerAcceptanceSpec extends IntegrationSpec implements SampleRecruiters {
+class UserControllerAcceptanceSpec extends IntegrationSpec implements SampleRecruiters {
 
     @Autowired
-    RecruiterFacade recruiterFacade
+    UserFacade userFacade
 
     @WithMockUser
     def "Should get recruiters"() {
         given: "Repository has two recruiters"
-        recruiterFacade.add(smith)
-        recruiterFacade.add(jones)
+        userFacade.add(smith)
+        userFacade.add(jones)
 
         when: "I go to /recruiters"
         ResultActions getRecruiters = mockMvc.perform(get("/recruiters"))
@@ -31,19 +31,19 @@ class RecruiterControllerAcceptanceSpec extends IntegrationSpec implements Sampl
                 .andExpect(content().json("""
                 {
                     "content":[
-                        {"id":$smith.id,"name":"$smith.name","surname":"$smith.surname"},
-                        {"id":$jones.id,"name":"$jones.name","surname":"$jones.surname"}
+                        {"id":$smith.id,"firstName":"$smith.firstName","lastName":"$smith.lastName","username":"$smith.username","email":"$smith.email"},
+                        {"id":$jones.id,"firstName":"$jones.firstName","lastName":"$jones.lastName","username":"$jones.username","email":"$jones.email"}
                     ]
                 }"""))
 
-        when: "I go to /recruiter/"
-        ResultActions getRecruiter = mockMvc.perform(get("/recruiter/$jones.id"))
+        when: "I go to /users/"
+        ResultActions getRecruiter = mockMvc.perform(get("/users/$jones.id"))
 
-        then: "I see details of a recruiter"
+        then: "I see details of a users"
         getRecruiter
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
-                   {"id":$jones.id,"name":"$jones.name","surname":"$jones.surname"}
+                   {"id":$jones.id,"firstName":"$jones.firstName","lastName":"$jones.lastName","username":"$jones.username","email":"$jones.email"}
                 """))
 
     }

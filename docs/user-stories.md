@@ -2,7 +2,7 @@
 
 ### Changing interview stage
 
- 1. Bob, recruiter, enters the HR App url in his browser
+ 1. Bob, user, enters the HR App url in his browser
  2. As the page loads he is prompted to log in
  3. After entering his credentials he is redirected to a homepage
  4. On the side he sees a navbar and in the main area he sees a list of currently open job positions. Each row is a link to details about recruitment
@@ -35,10 +35,10 @@
  6. Ann is shown a dialog first prompting her to login with her google account and then to pick a date and time for an interview which she does. She checks a checkbox asking if an automatic invite for the google calendar event should be sent to candidate's email. She clicks accept button.
  7. An event with given date is created on Ann's google account and an invite is sent to Kate. Ann is returned back to Kate's profile with a message stating that scheduling was successful and an email was sent to Kate. An automatically generated comment is visible stating that Ann scheduled an interview with Kate on the submitted date and time.
 
-### Adding new recruiter
+### Adding new user
 
  1. Admin, who received his login and password from HR App developer, clicks on a link on navigation bar to view existing recruiters.
- 2. He is directed to a page with a list of recruiters, currently only occupied by him. Each row in the list is a link to recruiter's profile. Admin sees a link to create a new recruiter. That link is not visible to normal users. He clicks it.
+ 2. He is directed to a page with a list of recruiters, currently only occupied by him. Each row in the list is a link to user's profile. Admin sees a link to create a new user. That link is not visible to normal users. He clicks it.
  3. He fills a form with his colleague's Bob data, including mandatory e-mail, login and password, and submits it. An email is sent to Bob with his new account details.
  4. Bob views the e-mail and is able to log into the HR App.
 
