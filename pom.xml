@@ -46,12 +46,12 @@
         <repository>
             <id>central</id>
             <name>2b39180438e8-releases</name>
-            <url>http://localhost:8082/artifactory/recruit-me</url>
+            <url>http://pik10.ii.pw.edu.pl:8082/artifactory/recruit-me</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>2b39180438e8-snapshots</name>
-            <url>http://localhost:8082/artifactory/recruit-me</url>
+            <url>http://pik10.ii.pw.edu.pl:8082/artifactory/recruit-me</url>
         </snapshotRepository>
     </distributionManagement>
 
