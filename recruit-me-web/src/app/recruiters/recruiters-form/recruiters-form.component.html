@@ -1,0 +1,26 @@
+<h1>Create recruiter</h1>
+<form (ngSubmit)="saveRecruiter()" #recruiterForm="ngForm">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required [(ngModel)]="model.username">
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="model.email">
+    </div>
+
+    <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" class="form-control" id="fname" name="fname" required [(ngModel)]="model.firstName">
+    </div>
+
+    <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" class="form-control" id="lname" name="lname" required [(ngModel)]="model.lastName">
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!recruiterForm.form.valid">Submit</button>
+    <p class="alert-danger" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+</form>
