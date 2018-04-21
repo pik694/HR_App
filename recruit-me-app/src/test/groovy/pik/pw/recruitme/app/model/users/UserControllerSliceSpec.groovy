@@ -92,11 +92,12 @@ class UserControllerSliceSpec extends Specification implements SampleUsers {
 
         when: "I go add /users/{id}  and add user"
 
-        ResultActions addUser = mockMvc.perform(post("/users/{id}", smith.id).
-                contentType(MediaType.APPLICATION_JSON).
-                content(asJsonString(smith)))
-        .andExpect(status().isOk())
-        .andExpect(content().json("""{"id":$smith.id, "firstName":"$smith.firstName", "lastName":"$smith.lastName"}"""))
+        ResultActions addUser = mockMvc.perform(
+                post("/users/{id}", smith.id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(smith)))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""{"id":$smith.id, "firstName":"$smith.firstName", "lastName":"$smith.lastName"}"""))
 
         then: "I have user"
 

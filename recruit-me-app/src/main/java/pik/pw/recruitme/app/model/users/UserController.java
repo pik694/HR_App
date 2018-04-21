@@ -39,7 +39,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/users/{id}")
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.POST)
     UserDTO updateUser(@PathVariable("id") int id, @RequestBody UserDTO userDTO){
 
       return userFacade.add(userDTO);
