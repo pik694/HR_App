@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import pik.pw.recruitme.app.model.recruiter.dto.RecruiterDTO;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Builder
@@ -15,6 +17,7 @@ import javax.persistence.Id;
 class Recruiter {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     private String name;
