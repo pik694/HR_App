@@ -15,6 +15,7 @@
                    [rowHeight]='"auto"'>
 
     </ngx-datatable>
-    <h2 *ngIf="!rows" class="text-center">No recruiters currently exist</h2>
+    <h2 *ngIf="!rows && !errorMsg" class="text-center">No recruiters currently exist</h2>
+    <h2 *ngIf="errorMsg" class="text-center">{{ errorMsg }}</h2>
   </section>
 </div>

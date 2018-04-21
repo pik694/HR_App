@@ -21,5 +21,6 @@
   </div>
 
   <button type="submit" class="btn btn-success" [disabled]="!recruiterForm.form.valid">Submit</button>
+  <p class="alert-danger" *ngIf="errorMsg">{{ errorMsg }}</p>
 
 </form>

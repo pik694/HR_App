@@ -16,7 +16,6 @@ export class RecruitersDetailsComponent implements OnInit {
               private service: RecruitersService) { }
 
   recruiter: Recruiter;
-  confirmDeleteDialog = false;
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
@@ -26,15 +25,6 @@ export class RecruitersDetailsComponent implements OnInit {
       }
     });
   }
-
-    onDelete() {
-    console.log(this.confirmDeleteDialog);
-        this.confirmDeleteDialog = true;
-    }
-
-    hideDialog() {
-        this.confirmDeleteDialog = false;
-    }
 
     deleteRecruiter() {
       this.service.deleteRecruiter(this.recruiter).subscribe( nothing => {

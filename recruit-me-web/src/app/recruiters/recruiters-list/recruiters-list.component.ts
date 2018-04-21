@@ -10,10 +10,12 @@ import { Router} from '@angular/router';
 })
 export class RecruitersListComponent implements OnInit {
 
-  constructor(private recruitersService: RecruitersService) { }
+  constructor(private recruitersService: RecruitersService) {
+  }
 
   rows: Array<any>;
   columns: Array<any>;
+  errorMsg: string;
 
     ngOnInit() {
         this.refreshList();
@@ -46,6 +48,10 @@ export class RecruitersListComponent implements OnInit {
                 recruiters.forEach( (recruiter) => {
                     this.rows.push(RecruitersListComponent.recruiterToRow(recruiter));
                 });
+                this.errorMsg = null;
+            },
+            error => {
+                this.errorMsg = "Could not connect to the server.";
             }
         );
     }
