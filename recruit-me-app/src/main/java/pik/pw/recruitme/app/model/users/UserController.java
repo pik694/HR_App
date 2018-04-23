@@ -29,9 +29,8 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    void addUser(@RequestBody UserDTO userDTO){
-
-        userFacade.add(userDTO);
+    UserDTO addUser(@RequestBody UserDTO userDTO){
+        return userFacade.add(userDTO);
     }
 
     @PostMapping("/users/{id}")
