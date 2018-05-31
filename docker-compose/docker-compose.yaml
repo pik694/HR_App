@@ -4,6 +4,7 @@ services:
   db:
     build:
       context: ../Database
+    restart: always
 
   backend:
     build:
@@ -14,6 +15,7 @@ services:
       - db
     depends_on:
       - db
+    restart: always
 
   frontend:
     build:
