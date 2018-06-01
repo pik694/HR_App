@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+
+  backend:
+    ports:
+      - "7070:8080"
+
+  frontend:
+    ports:
+      - "6969:80"
+
+
+
+

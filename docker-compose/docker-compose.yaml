@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+  db:
+    build:
+      context: ../Database
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+      args:
+        - JAR_FILE=app.jar
+    links:
+      - db
+    depends_on:
+      - db
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+    links:
+      - backend
+    depends_on:
+      - backend
+    restart: always
+
+
