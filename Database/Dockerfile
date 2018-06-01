@@ -1,4 +1,4 @@
-FROM mysql
+FROM mysql:5.7
 
 MAINTAINER Daniel Bigos <D.Bigos@stud.elka.pw.edu.pl>
 

@@ -1,9 +1,9 @@
-package pik.pw.recruitme.app.model.users.domain;
+package pik.pw.recruitme.app.model.applicants.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-import pik.pw.recruitme.app.model.users.dto.UserDTO;
+import pik.pw.recruitme.app.model.applicants.dto.ApplicantDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -14,25 +14,12 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "user_type")
-@DiscriminatorValue(value = "user")
 @Entity
-class User {
+class Applicant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-
-    @NotNull
-    @Column(unique = true)
-    private String username;
-
-
-//    @NotEmpty
-//    @NotNull
-//    private String password;
-
 
     @NotNull
     @NotEmpty
@@ -47,16 +34,18 @@ class User {
     @NotEmpty
     private String email;
 
-    UserDTO toDTO() {
-        return UserDTO.builder()
+    @NotNull
+    @NotEmpty
+    private String phoneNumber;
+
+    ApplicantDTO toDTO() {
+
+        return ApplicantDTO.builder()
                 .id(id)
-                .username(username)
-//                .password(password)
                 .firstName(name)
                 .lastName(surname)
                 .email(email)
+                .phoneNumber(phoneNumber)
                 .build();
     }
-
-
 }
