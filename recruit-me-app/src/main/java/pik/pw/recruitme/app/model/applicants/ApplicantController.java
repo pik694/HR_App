@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pik.pw.recruitme.app.model.applicants.domain.ApplicantFacade;
 import pik.pw.recruitme.app.model.applicants.dto.ApplicantDTO;
-import pik.pw.recruitme.app.model.users.dto.UserDTO;
 
 import java.util.List;
 

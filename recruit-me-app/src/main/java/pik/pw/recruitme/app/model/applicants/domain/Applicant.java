@@ -6,23 +6,14 @@ import lombok.NoArgsConstructor;
 import pik.pw.recruitme.app.model.applicants.dto.ApplicantDTO;
 
 import javax.persistence.*;
-import javax.validation.Constraint;
-import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
 
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
 class Applicant {
 
@@ -47,14 +38,14 @@ class Applicant {
     @NotEmpty
     private String phoneNumber;
 
-     ApplicantDTO toDTO() {
+    ApplicantDTO toDTO() {
 
-         return ApplicantDTO.builder()
-                 .id(id)
-                 .firstName(name)
-                 .lastName(surname)
-                 .email(email)
-                 .phoneNumber(phoneNumber)
-                 .build();
+        return ApplicantDTO.builder()
+                .id(id)
+                .firstName(name)
+                .lastName(surname)
+                .email(email)
+                .phoneNumber(phoneNumber)
+                .build();
     }
 }

@@ -5,7 +5,7 @@ import pik.pw.recruitme.app.infrastructure.mvc.ObjectNotFoundException;
 
 import java.util.List;
 
-public interface ApplicantRepository extends Repository<Applicant, Integer> {
+interface ApplicantRepository extends Repository<Applicant, Integer> {
 
     Applicant save(Applicant applicant);
 
