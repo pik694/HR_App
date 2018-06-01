@@ -1,7 +1,7 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
-import {JobPosting} from "../jobposting";
-import {JobsService} from "../jobs.service";
+import {Router} from '@angular/router';
+import {JobPosting} from '../jobposting';
+import {JobsService} from '../jobs.service';
 
 @Component({
   selector: 'app-jobpostings-list',

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Process} from "../../processes/process";
-import {isUndefined} from "util";
-import {ProcessesService} from "../../processes/processes.service";
-import {JobPosting} from "../../jobpostings/jobposting";
-import {JobsService} from "../../jobpostings/jobs.service";
-import {Applicant} from "../../applicants/applicant";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Process} from '../../processes/process';
+import {isUndefined} from 'util';
+import {ProcessesService} from '../../processes/processes.service';
+import {JobPosting} from '../../jobpostings/jobposting';
+import {JobsService} from '../../jobpostings/jobs.service';
+import {Applicant} from '../../applicants/applicant';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-process-form',
@@ -22,7 +22,7 @@ export class ProcessFormComponent implements OnInit {
   ngOnInit() {
       this.route.params.subscribe(params => {
           this.jobId = params['jobid'];
-          let id = params['id'];
+          const id = params['id'];
           if (!isUndefined(this.jobId)) {
               this.editing = false;
               this.model = new Process();
@@ -49,13 +49,12 @@ export class ProcessFormComponent implements OnInit {
         this.procService.updateProcess(this.model).subscribe(proc => {
             this.router.navigateByUrl('/processes/' + this.model.id);
         });
-      }
-      else {
+      } else {
           this.model.applicant = new Applicant(this.applicantId);
           this.model.job = new JobPosting(this.jobId);
           this.procService.createProcess(this.model).subscribe(proc => {
               this.router.navigateByUrl('/processes/' + proc.id);
-          })
+          });
       }
     }
 }

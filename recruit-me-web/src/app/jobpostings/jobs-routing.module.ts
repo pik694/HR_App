@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {JobPostingsFormComponent} from './jobpostings-form/jobpostings-form.component';
 import {JobPostingsDetailsComponent} from './jobpostings-details/jobpostings-details.component';
 import {JobPostingsListComponent} from './jobpostings-list/jobpostings-list.component';
-import {ProcessFormComponent} from "../shared/process-form/process-form.component";
+import {ProcessFormComponent} from '../shared/process-form/process-form.component';
 
 const routes: Routes = [
     {

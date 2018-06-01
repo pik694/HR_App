@@ -1,8 +1,8 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {ApplicantsService} from "../applicants.service";
-import {Router} from "@angular/router";
-import {Applicant} from "../applicant";
-import {DatePipe} from "@angular/common";
+import {ApplicantsService} from '../applicants.service';
+import {Router} from '@angular/router';
+import {Applicant} from '../applicant';
+import {DatePipe} from '@angular/common';
 
 @Component({
     selector: 'app-applicants-list',

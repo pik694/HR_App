@@ -1,9 +1,9 @@
 import {InMemoryDbService, ParsedRequestUrl, RequestInfoUtilities} from 'angular-in-memory-web-api';
 import {User} from './users/user';
-import {JobPosting} from "./jobpostings/jobposting";
-import {Applicant, Resume} from "./applicants/applicant";
-import {Process, ProcessStatus} from "./processes/process";
-import {Comment} from "./processes/comment/comment"
+import {JobPosting} from './jobpostings/jobposting';
+import {Applicant, Resume} from './applicants/applicant';
+import {Process, ProcessStatus} from './processes/process';
+import {Comment} from './processes/comment/comment';
 
 export class InMemoryDataService implements InMemoryDbService {
     parseRequestUrl(url: string, utils: RequestInfoUtilities): ParsedRequestUrl {
@@ -99,16 +99,16 @@ export class InMemoryDataService implements InMemoryDbService {
             new User(69, 'ret', 'bob@bobmail.bob', 'Vivienne', 'Cooper'),
         ];
         const applicants = [
-            new Applicant(1, "Bob", "Johnson", new Date(), new Resume("Bob_resume.pdf", "google.com")),
-            new Applicant(2, "Hardware Engineer", "Easy job easy money", new Date(), new Resume("xd", "google.com")),
+            new Applicant(1, 'Bob', 'Johnson', new Date(), new Resume('Bob_resume.pdf', 'google.com')),
+            new Applicant(2, 'Hardware Engineer', 'Easy job easy money', new Date(), new Resume('xd', 'google.com')),
         ];
         const jobs = [
-            new JobPosting(1, "Software Engineer", "Easy job easy money", "Millions of cents"),
-            new JobPosting(2, "Hardware Engineer", "Easy job easy money", "$5345-$53499"),
+            new JobPosting(1, 'Software Engineer', 'Easy job easy money', 'Millions of cents'),
+            new JobPosting(2, 'Hardware Engineer', 'Easy job easy money', '$5345-$53499'),
         ];
         const comments = [
-            new Comment(1, users[0], new Date(), "Cool."),
-            new Comment(2, users[1], new Date(), "Cool as well.")
+            new Comment(1, users[0], new Date(), 'Cool.'),
+            new Comment(2, users[1], new Date(), 'Cool as well.')
         ];
         const processes = [
             new Process(1, jobs[0], applicants[0], 3, comments)

@@ -6,8 +6,8 @@ import {ApplicantsModule} from '../applicants/applicants.module';
 import {SharedModule} from '../shared/shared.module';
 import {ProcessesRoutingModule} from './processes-routing.module';
 import { CommentComponent } from './comment/comment.component';
-import {ProcessesService} from "./processes.service";
-import {CommentService} from "./comment/comment.service";
+import {ProcessesService} from './processes.service';
+import {CommentService} from './comment/comment.service';
 
 @NgModule({
   imports: [

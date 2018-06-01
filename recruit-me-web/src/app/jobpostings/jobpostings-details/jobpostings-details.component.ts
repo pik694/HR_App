@@ -52,9 +52,9 @@ export class JobPostingsDetailsComponent implements OnInit {
                         this.procsService.getProcessesForJob(job.id).subscribe( procs => {
                             this.rows = [];
                             procs.forEach( proc => {
-                                    this.rows.push(JobPostingsDetailsComponent.processToRow(proc))
+                                    this.rows.push(JobPostingsDetailsComponent.processToRow(proc));
                                 }
-                            )
+                            );
                         },
                         error => {
                             this.errorMsg = 'Could not connect to the server.';

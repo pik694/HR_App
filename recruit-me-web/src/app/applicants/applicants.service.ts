@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {ErrorObservable} from "rxjs/observable/ErrorObservable";
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import {Applicant} from "./applicant";
-import {catchError} from "rxjs/operators";
+import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {Applicant} from './applicant';
+import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class ApplicantsService {

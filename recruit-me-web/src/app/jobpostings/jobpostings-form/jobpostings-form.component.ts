@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {JobPosting} from "../jobposting";
-import {ActivatedRoute, Router} from "@angular/router";
-import {JobsService} from "../jobs.service";
-import {isUndefined} from "util";
+import {JobPosting} from '../jobposting';
+import {ActivatedRoute, Router} from '@angular/router';
+import {JobsService} from '../jobs.service';
+import {isUndefined} from 'util';
 
 @Component({
   selector: 'app-jobpostings-form',

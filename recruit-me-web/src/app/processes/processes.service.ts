@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {ErrorObservable} from "rxjs/observable/ErrorObservable";
-import {Observable} from "rxjs/Observable";
-import {Process} from "./process";
-import {catchError} from "rxjs/operators";
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
+import {Observable} from 'rxjs/Observable';
+import {Process} from './process';
+import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class ProcessesService {

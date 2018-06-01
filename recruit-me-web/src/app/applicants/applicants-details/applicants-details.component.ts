@@ -1,9 +1,9 @@
 import {Component, Input, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {ApplicantsService} from "../applicants.service";
-import {Applicant} from "../applicant";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {Process} from "../../processes/process";
-import {ProcessesService} from "../../processes/processes.service";
+import {ApplicantsService} from '../applicants.service';
+import {Applicant} from '../applicant';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Process} from '../../processes/process';
+import {ProcessesService} from '../../processes/processes.service';
 
 @Component({
   selector: 'app-applicants-details',
@@ -20,7 +20,7 @@ export class ApplicantsDetailsComponent implements OnInit {
     }
 
     @Input() applicant: Applicant = null;
-    isApplicantsPage: boolean = false;
+    isApplicantsPage = false;
 
     rows: Array<any>;
     columns: Array<any>;
@@ -51,13 +51,13 @@ export class ApplicantsDetailsComponent implements OnInit {
                             this.rows = [];
                             console.log(procs);
                             procs.forEach( proc => {
-                                    this.rows.push(ApplicantsDetailsComponent.processToRow(proc))
+                                    this.rows.push(ApplicantsDetailsComponent.processToRow(proc));
                                 },
                                 error => {
                                     this.errorMsg = 'Could not connect to the server.';
                                 }
-                            )
-                        })
+                            );
+                        });
                     });
                 }
             });

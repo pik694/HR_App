@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ProcessesService} from '../processes.service';
 import {Process} from '../process';
-import {Comment} from "../comment/comment"
+import {Comment} from '../comment/comment';
 
 @Component({
   selector: 'app-process-details',

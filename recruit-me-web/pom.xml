@@ -45,15 +45,6 @@
               </configuration>
             </execution>
             <execution>
-              <id>yarn lint</id>
-              <goals>
-                <goal>yarn</goal>
-              </goals>
-              <configuration>
-                <arguments>lint</arguments>
-              </configuration>
-            </execution>
-            <execution>
               <id>yarn build</id>
               <goals>
                 <goal>yarn</goal>

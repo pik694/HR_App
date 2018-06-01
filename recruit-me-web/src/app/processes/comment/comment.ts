@@ -1,4 +1,4 @@
-import {User} from "../../users/user";
+import {User} from '../../users/user';
 
 export class Comment {
     constructor(id: number = null, user: User = null, date: Date = null, content: string = null) {

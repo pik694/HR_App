@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Comment} from "./comment";
-import {CommentService} from "./comment.service";
+import {Comment} from './comment';
+import {CommentService} from './comment.service';
 
 @Component({
   selector: 'app-comment',
@@ -13,8 +13,8 @@ export class CommentComponent implements OnInit {
 
   @Input() model: Comment;
   backupModel: Comment;
-    isCreatingNew: boolean = false;
-  @Input() isEditing: boolean = false;
+    isCreatingNew = false;
+  @Input() isEditing = false;
   @Input() processId: number; // if creating new
   modalId: string = CommentComponent.uuidv4();
   ready = false;
@@ -23,7 +23,7 @@ export class CommentComponent implements OnInit {
 
   static uuidv4() {
       return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-          var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+          const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
           return v.toString(16);
       });
   }
@@ -32,17 +32,18 @@ export class CommentComponent implements OnInit {
     if (this.model == null) {
       this.isEditing = this.isCreatingNew = true;
       this.model = new Comment();
-    }
-    else
+    } else {
       this.backupModel = this.model;
-    this.ready=true;
+    }
+    this.ready = true;
   }
 
   saveComment() {
-    if (this.processId == null)
+    if (this.processId == null) {
       this.updateComment();
-    else
+    } else {
       this.createComment();
+    }
   }
 
   updateComment() {
@@ -51,12 +52,11 @@ export class CommentComponent implements OnInit {
   }
 
   createComment() {
-    this.service.createCommentForProcess(this.model, this.processId).subscribe(comment =>
-    {
+    this.service.createCommentForProcess(this.model, this.processId).subscribe(comment => {
       console.log(comment);
       this.onCommentCreation.emit(comment);
     });
-    this.model.content = "";
+    this.model.content = '';
   }
 
   deleteComment() {
@@ -66,7 +66,7 @@ export class CommentComponent implements OnInit {
 
   startEditing() {
     this.backupModel = Object.assign({}, this.model);
-    this.isEditing = true
+    this.isEditing = true;
   }
 
   cancelEditing() {

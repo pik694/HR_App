@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {ErrorObservable} from "rxjs/observable/ErrorObservable";
-import {HttpClient} from "@angular/common/http";
-import {catchError} from "rxjs/operators";
-import {Comment} from "./comment";
+import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
+import {HttpClient} from '@angular/common/http';
+import {catchError} from 'rxjs/operators';
+import {Comment} from './comment';
 
 @Injectable()
 export class CommentService {

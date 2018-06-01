@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {ApplicantsService} from "../applicants.service";
-import {Applicant, Resume} from "../applicant";
-import {isUndefined} from "util";
+import {ActivatedRoute, Router} from '@angular/router';
+import {ApplicantsService} from '../applicants.service';
+import {Applicant, Resume} from '../applicant';
+import {isUndefined} from 'util';
 
 @Component({
   selector: 'app-applicants-form',
@@ -57,13 +57,13 @@ export class ApplicantsFormComponent implements OnInit {
     }
 
     onFileChange(event) {
-        let reader = new FileReader();
+        const reader = new FileReader();
         if (event.target.files && event.target.files.length > 0) {
-            let file = event.target.files[0];
+            const file = event.target.files[0];
             reader.readAsDataURL(file);
             reader.onload = () => {
                 this.model.resume = new Resume(file.name, reader.result.split(',')[1]);
-            }
+            };
         }
     }
 

@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {ApplicantsFormComponent} from "./applicants-form/applicants-form.component";
-import {ApplicantsDetailsComponent} from "./applicants-details/applicants-details.component";
-import {ApplicantsListComponent} from "./applicants-list/applicants-list.component";
+import {ApplicantsFormComponent} from './applicants-form/applicants-form.component';
+import {ApplicantsDetailsComponent} from './applicants-details/applicants-details.component';
+import {ApplicantsListComponent} from './applicants-list/applicants-list.component';
 
 const routes: Routes = [
     {
