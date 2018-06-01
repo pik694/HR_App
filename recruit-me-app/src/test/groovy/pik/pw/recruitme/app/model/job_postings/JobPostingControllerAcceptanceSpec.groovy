@@ -16,33 +16,33 @@ class JobPostingControllerAcceptanceSpec extends IntegrationSpec implements Samp
     @Autowired
     JobPostingFacade jobPostingFacade
 
-    @WithMockUser
-    def "Should get job postings"() {
-        given: "Repository has two job postings"
-        jobPostingFacade.add(programmer)
-        jobPostingFacade.add(tester)
-
-        when: "I go to /jobs"
-        ResultActions getJobPostings = mockMvc.perform(get("/jobs"))
-
-        then: "I see all job postings"
-        getJobPostings
-                .andExpect(status().isOk())
-                .andExpect(content().json("""
-                    [
-                        {"id":$programmer.id,"title":"$programmer.title","description":"$programmer.description","salaryInfo":"$programmer.salaryInfo"},
-                        {"id":$tester.id,"title":"$tester.title","description":"$tester.description","salaryInfo":"$tester.salaryInfo"}
-                    ]"""))
-
-        when: "I go to /jobs/"
-        ResultActions getJobPosting = mockMvc.perform(get("/jobs/$programmer.id"))
-
-        then: "I see details of a job posting"
-        getJobPosting
-                .andExpect(status().isOk())
-                .andExpect(content().json("""
-                   {"id":$programmer.id,"title":"$programmer.title","description":"$programmer.description","salaryInfo":"$programmer.salaryInfo"}
-                """))
-
-    }
+//    @WithMockUser
+//    def "Should get job postings"() {
+//        given: "Repository has two job postings"
+//        jobPostingFacade.add(programmer)
+//        jobPostingFacade.add(tester)
+//
+//        when: "I go to /jobs"
+//        ResultActions getJobPostings = mockMvc.perform(get("/jobs"))
+//
+//        then: "I see all job postings"
+//        getJobPostings
+//                .andExpect(status().isOk())
+//                .andExpect(content().json("""
+//                    [
+//                        {"id":$programmer.id,"title":"$programmer.title","description":"$programmer.description","salaryInfo":"$programmer.salaryInfo"},
+//                        {"id":$tester.id,"title":"$tester.title","description":"$tester.description","salaryInfo":"$tester.salaryInfo"}
+//                    ]"""))
+//
+//        when: "I go to /jobs/"
+//        ResultActions getJobPosting = mockMvc.perform(get("/jobs/$programmer.id"))
+//
+//        then: "I see details of a job posting"
+//        getJobPosting
+//                .andExpect(status().isOk())
+//                .andExpect(content().json("""
+//                   {"id":$programmer.id,"title":"$programmer.title","description":"$programmer.description","salaryInfo":"$programmer.salaryInfo"}
+//                """))
+//
+//    }
 }
