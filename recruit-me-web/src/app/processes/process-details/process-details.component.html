@@ -1,0 +1,57 @@
+<h1>Process Details</h1>
+<section class="model-details">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Job Details:</h2>
+      <app-jobpostings-details [job]="process.job"></app-jobpostings-details>
+    </div>
+    <div class="col-md-6 right-comparison-column">
+      <h2>Applicant Details:</h2>
+      <app-applicants-details [applicant]="process.applicant"></app-applicants-details>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>Status: {{ statuses[process.status] }}</p>
+      <p>Score: {{ process.points }}</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <a routerLink="/processes/edit/{{process.id}}" class="btn btn-primary a-btn-slide-text">
+        <span><strong>Edit</strong></span>
+      </a>
+      <a href="javascript:void(0)" class="btn btn-danger a-btn-slide-text" data-toggle="modal"
+         data-target="#deleteModal">
+        <span><strong>Delete</strong></span>
+      </a>
+    </div>
+  </div>
+  <div class="comments">
+    <app-comment class="comment-form" (onCommentCreation)="newComment($event)" [isEditing]="true" [processId]="process.id"></app-comment>
+    <app-comment [isEditing]="false" *ngFor="let comment of process.comments" (onCommentDelete)="commentDeleted($event)" [model]="comment"></app-comment>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete</h5>
+        <button id="closeExampleModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete {{ process.job.title }} for
+        {{ process.applicant.firstName }} {{ process.applicant.lastName }}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteProcess()">Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

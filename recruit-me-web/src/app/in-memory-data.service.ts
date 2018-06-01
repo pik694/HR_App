@@ -1,7 +1,21 @@
-import {InMemoryDbService} from 'angular-in-memory-web-api';
+import {InMemoryDbService, ParsedRequestUrl, RequestInfoUtilities} from 'angular-in-memory-web-api';
 import {User} from './users/user';
+import {JobPosting} from "./jobpostings/jobposting";
+import {Applicant, Resume} from "./applicants/applicant";
+import {Process, ProcessStatus} from "./processes/process";
+import {Comment} from "./processes/comment/comment"
 
 export class InMemoryDataService implements InMemoryDbService {
+    parseRequestUrl(url: string, utils: RequestInfoUtilities): ParsedRequestUrl {
+        let newUrl = url.replace(/\/api\/jobs\/.*\/processes/, '/api/jobsprocesses');
+        newUrl = newUrl.replace(/\/api\/applicants\/.*\/processes/, '/api/applicantsprocesses');
+        newUrl = newUrl.replace(/\/api\/processes\/.*\/comments/, '/api/comments');
+        console.log('newUrl:', newUrl);
+        const parsed = utils.parseRequestUrl(newUrl);
+        console.log(`parseRequestUrl override of '${url}':`, parsed);
+        return parsed;
+    }
+
     createDb() {
         const users = [
             new User(1, 'bobsky', 'bob@bobmail.bob', 'Bob', 'Johnson'),
@@ -84,6 +98,28 @@ export class InMemoryDataService implements InMemoryDbService {
             new User(68, 'dfgdfg', 'bob@bobmail.bob', 'Jerzy', 'Decapito'),
             new User(69, 'ret', 'bob@bobmail.bob', 'Vivienne', 'Cooper'),
         ];
-        return {users};
+        const applicants = [
+            new Applicant(1, "Bob", "Johnson", new Date(), new Resume("Bob_resume.pdf", "google.com")),
+            new Applicant(2, "Hardware Engineer", "Easy job easy money", new Date(), new Resume("xd", "google.com")),
+        ];
+        const jobs = [
+            new JobPosting(1, "Software Engineer", "Easy job easy money", "Millions of cents"),
+            new JobPosting(2, "Hardware Engineer", "Easy job easy money", "$5345-$53499"),
+        ];
+        const comments = [
+            new Comment(1, users[0], new Date(), "Cool."),
+            new Comment(2, users[1], new Date(), "Cool as well.")
+        ];
+        const processes = [
+            new Process(1, jobs[0], applicants[0], 3, comments)
+        ];
+        const jobsprocesses = [
+            processes[0]
+        ];
+        const applicantsprocesses = [
+            processes[0]
+        ];
+
+        return { users, applicants, jobs, processes, jobsprocesses, applicantsprocesses, comments };
     }
 }

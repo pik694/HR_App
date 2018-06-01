@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../user';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {UsersService} from '../users.service';
-import {routes} from '../../routes';
 
 @Component({
     selector: 'app-users-details',
@@ -29,7 +28,7 @@ export class UsersDetailsComponent implements OnInit {
 
     deleteUser() {
         this.service.deleteUser(this.user).subscribe(nothing => {
-            this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE);
+            this.router.navigateByUrl('/users');
         });
     }
 }

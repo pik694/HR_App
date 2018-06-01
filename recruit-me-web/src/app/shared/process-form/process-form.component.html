@@ -1,0 +1,28 @@
+<h1>Recruitment process for {{ job }} position</h1>
+<form (ngSubmit)="saveProcess()" #processForm="ngForm">
+  <div *ngIf="editing" class="form-group">
+    <label for="jobId">Job's Id</label>
+    <input type="text" class="form-control" id="jobId" name="jobId" required [(ngModel)]="jobId">
+  </div>
+
+  <div class="form-group">
+    <label for="applicantId">Applicant's Id</label>
+    <input type="text" class="form-control" id="applicantId" name="applicantId" required [(ngModel)]="applicantId">
+  </div>
+
+  <div class="form-group">
+    <label for="points">Test Score</label>
+    <input type="number" class="form-control" id="points" name="points" [(ngModel)]="model.points">
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status</label>
+    <select class="selectpicker" id="status" name="status" [(ngModel)]="model.status">
+      <option *ngFor="let s of statuses" [ngValue]="statuses.indexOf(s)">{{s}}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="!processForm.form.valid">Submit</button>
+  <p class="alert-danger" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+</form>

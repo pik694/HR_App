@@ -26,3 +26,15 @@ html, body {
 }
 
 /* -------- END FORMS CSS -----*/
+
+.alert-danger {
+    margin-top: 10px;
+}
+
+.crud-controls {
+    font-size: 14px;
+}
+
+.list-controls-row {
+    margin-bottom: 6px;
+}
