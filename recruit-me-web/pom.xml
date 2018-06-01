@@ -5,7 +5,7 @@
     <parent>
         <artifactId>recruit-me</artifactId>
         <groupId>pw.pik</groupId>
-        <version>0.2.0</version>
+        <version>0.3.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -61,16 +61,6 @@
               <phase>generate-resources</phase>
               <configuration>
                 <arguments>build</arguments>
-              </configuration>
-            </execution>
-            <execution>
-              <id>yarn test</id>
-              <goals>
-                <goal>yarn</goal>
-              </goals>
-              <phase>test</phase>
-              <configuration>
-                <arguments>test --watch false</arguments>
               </configuration>
             </execution>
           </executions>

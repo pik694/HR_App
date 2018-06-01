@@ -6,12 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import pik.pw.recruitme.app.model.recruiter.domain.RecruiterNotFoundException;
 
 @ControllerAdvice
 class ExceptionHandlingAdvice {
-    @ExceptionHandler(RecruiterNotFoundException.class)
-    ResponseEntity<ErrorMessage> handleNotFoundRecruiter(RecruiterNotFoundException e) {
+    @ExceptionHandler(ObjectNotFoundException.class)
+    ResponseEntity<ErrorMessage> handleNotFoundRecruiter(ObjectNotFoundException e) {
         ErrorMessage errorMessage = new ErrorMessage(e.getMessage());
         return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
     }
