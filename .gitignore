@@ -9,3 +9,11 @@
 /recruit-me-web/target/
 /recruit-me-app/target/
 /recruit-me-web/dist/
+
+*.DS_Store
+
+docker-compose/backend/app.jar
+docker-compose/frontend/files/
+.DS_Store
+docker-compose/.DS_Store
+recruit-me-web/.DS_Store
