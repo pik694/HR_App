@@ -18,38 +18,35 @@ public class CommentController {
         this.commentFacade = commentFacade;
     }
 
-    @GetMapping("/comments")
-    List<CommentDTO> getComments() {
-        return commentFacade.findAll();
+    // "/comments"
+
+    @DeleteMapping("/comments")
+    ResponseEntity<?> deleteComments() {
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/comment/{id}")
-    CommentDTO getComment(@PathVariable int id) {
-        return commentFacade.show(id);
+    @GetMapping("/comments")
+    ResponseEntity<?> getComments() {
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/comments")
-    CommentDTO addComment(@RequestBody CommentDTO commentDTO){
-
-        return commentFacade.add(commentDTO);
-    }
-
-    @PostMapping("/comments/{id}")
-    ResponseEntity<?> addComments(){
+    ResponseEntity<?> addComment(){
 
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+
 
     @PutMapping("/comments")
     ResponseEntity<?> updateComments(){
+
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @PutMapping("/comments/{id}")
-    void updateComment(@RequestBody CommentDTO commentDTO){
-        commentFacade.add(commentDTO);
-    }
 
+    // "/comments/{id}"
 
     @DeleteMapping("/comments/{id}")
     void deleteComment(@PathVariable int id){
@@ -58,8 +55,26 @@ public class CommentController {
 
     }
 
-    @DeleteMapping("/comments")
-    ResponseEntity<?> deleteComments(@PathVariable int id){
+    @GetMapping("/comments/{id}")
+    ResponseEntity<?> getComment() {
+
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+
+
+
+    @PostMapping("/comments/{id}")
+    ResponseEntity<?> addComments(){
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+
+    @PutMapping("/comments/{id}")
+    void updateComment(@RequestBody CommentDTO commentDTO){
+
+
+        commentFacade.add(commentDTO);
+    }
+
 }

@@ -55,4 +55,32 @@ public class ProcessFacade {
 
         return dtos;
     }
+
+    public List<ProcessDTO> findAllProcessesOfJobPosting(int jobPostingId) {
+
+        List<ProcessDTO> dtos = new ArrayList<>();
+
+        for(Process process: repository.findAll()) {
+
+            ProcessDTO dto = process.toDTO();
+            if(dto.getJob().getId() == jobPostingId )
+                dtos.add(dto);
+        }
+
+        return dtos;
+    }
+
+    public List<ProcessDTO> getProcessesByApplicantId(int applicantId) {
+
+        List<ProcessDTO> dtos = new ArrayList<>();
+
+        for(Process process: repository.findAll()) {
+
+            ProcessDTO dto = process.toDTO();
+            if(dto.getApplicant().getId() == applicantId )
+                dtos.add(dto);
+        }
+
+        return dtos;
+    }
 }
