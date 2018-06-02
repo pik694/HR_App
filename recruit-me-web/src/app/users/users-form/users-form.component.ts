@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../user';
 import {UsersService} from '../users.service';
 import {Router, ActivatedRoute} from '@angular/router';
-import {routes} from '../../routes';
 import {isUndefined} from 'util';
 
 @Component({
@@ -22,7 +21,7 @@ export class UsersFormComponent implements OnInit {
     errorMsg: string;
 
     ngOnInit() {
-        let id: Number;
+        let id: number;
         this.route.params.subscribe(params => {
             id = params['id'];
             if (!isUndefined(id)) {
@@ -40,7 +39,7 @@ export class UsersFormComponent implements OnInit {
         if (this.editing) {
             this.recruiterService.updateUser(this.model).subscribe(
                 success => {
-                    this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + '/' + this.model.id);
+                    this.router.navigateByUrl('users/' + this.model.id);
                 },
                 error => {
                     this.errorMsg = 'Could not submit changes to the server';
@@ -49,7 +48,7 @@ export class UsersFormComponent implements OnInit {
         } else {
             this.recruiterService.createRecruiter(this.model).subscribe(recruiter => {
                     this.model = recruiter;
-                    this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + '/' + this.model.id);
+                    this.router.navigateByUrl('users/' + this.model.id);
                 },
                 error => {
                     this.errorMsg = 'Could not submit changes to the server';

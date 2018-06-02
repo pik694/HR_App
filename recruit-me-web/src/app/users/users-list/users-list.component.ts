@@ -2,7 +2,6 @@ import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {User} from '../user';
 import {UsersService} from '../users.service';
 import {Router} from '@angular/router';
-import {routes} from '../../routes';
 
 @Component({
     selector: 'app-users-list',
@@ -59,6 +58,6 @@ export class UsersListComponent implements OnInit {
 
     viewDetails(event) {
         console.log(event);
-        this.router.navigateByUrl(routes.RECRUITERS_BASE_ROUTE + '/' + event.row.id);
+        this.router.navigateByUrl('users/' + event.row.id);
     }
 }
