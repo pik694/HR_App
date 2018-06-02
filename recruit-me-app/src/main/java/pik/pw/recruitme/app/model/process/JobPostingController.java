@@ -1,10 +1,10 @@
-package pik.pw.recruitme.app.model.job_postings;
+package pik.pw.recruitme.app.model.process;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pik.pw.recruitme.app.model.job_postings.domain.JobPostingFacade;
-import pik.pw.recruitme.app.model.job_postings.dto.JobPostingDTO;
+import pik.pw.recruitme.app.model.process.domain.JobPostingFacade;
+import pik.pw.recruitme.app.model.process.dto.JobPostingDTO;
 
 import java.util.List;
 

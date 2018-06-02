@@ -1,4 +1,4 @@
-package pik.pw.recruitme.app.model.job_postings.domain;
+package pik.pw.recruitme.app.model.process.domain;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
-package pik.pw.recruitme.app.model.job_postings.domain
+package pik.pw.recruitme.app.model.process.domain
 
 import groovy.transform.CompileStatic
-import pik.pw.recruitme.app.model.job_postings.dto.JobPostingDTO
+import pik.pw.recruitme.app.model.process.dto.JobPostingDTO
 
 @CompileStatic
 trait SampleJobPostings {

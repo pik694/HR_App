@@ -1,4 +1,4 @@
-package pik.pw.recruitme.app.model.job_postings.domain;
+package pik.pw.recruitme.app.model.process.domain;
 
 import org.springframework.data.repository.Repository;
 import pik.pw.recruitme.app.infrastructure.mvc.ObjectNotFoundException;

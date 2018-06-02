@@ -1,4 +1,4 @@
-package pik.pw.recruitme.app.model.job_postings.dto;
+package pik.pw.recruitme.app.model.process.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

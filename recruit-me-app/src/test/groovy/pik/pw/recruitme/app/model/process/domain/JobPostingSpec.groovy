@@ -1,8 +1,8 @@
-package pik.pw.recruitme.app.model.job_postings.domain
+package pik.pw.recruitme.app.model.process.domain
 
 import org.junit.After
 import pik.pw.recruitme.app.infrastructure.mvc.ObjectNotFoundException
-import pik.pw.recruitme.app.model.job_postings.dto.JobPostingDTO
+import pik.pw.recruitme.app.model.process.dto.JobPostingDTO
 import spock.lang.Specification
 
 class JobPostingSpec extends Specification implements SampleJobPostings {

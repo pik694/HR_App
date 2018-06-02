@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 @DiscriminatorColumn(name = "user_type")
 @DiscriminatorValue(value = "user")
 @Entity
-class User {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -47,7 +47,7 @@ class User {
     @NotEmpty
     private String email;
 
-    UserDTO toDTO() {
+    public UserDTO toDTO() {
         return UserDTO.builder()
                 .id(id)
                 .username(username)
