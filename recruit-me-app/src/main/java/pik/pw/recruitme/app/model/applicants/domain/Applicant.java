@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-class Applicant {
+public class Applicant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -38,7 +38,7 @@ class Applicant {
     @NotEmpty
     private String phoneNumber;
 
-    ApplicantDTO toDTO() {
+    public ApplicantDTO toDTO() {
 
         return ApplicantDTO.builder()
                 .id(id)

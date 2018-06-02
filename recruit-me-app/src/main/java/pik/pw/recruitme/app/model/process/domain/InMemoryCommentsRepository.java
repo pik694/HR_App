@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static java.util.Objects.requireNonNull;
 
-public class InMemoryCommentRepository implements CommentRepository {
+public class InMemoryCommentsRepository implements CommentRepository {
 
     private ConcurrentHashMap<Integer, Comment> map = new ConcurrentHashMap<>();
 

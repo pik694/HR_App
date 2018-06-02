@@ -2,9 +2,9 @@ package pik.pw.recruitme.app.model.applicants.domain;
 
 import pik.pw.recruitme.app.model.applicants.dto.ApplicantDTO;
 
-class ApplicantFactory {
+public class ApplicantFactory {
 
-    Applicant from(ApplicantDTO dto) {
+    public Applicant from(ApplicantDTO dto) {
 
         return Applicant.builder()
                 .id(dto.getId())
