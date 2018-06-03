@@ -12,6 +12,7 @@ public class ApplicantFactory {
                 .surname(dto.getLastName())
                 .email(dto.getEmail())
                 .phoneNumber(dto.getPhoneNumber())
+                .birthDate(dto.getBirthDate())
                 .build();
     }
 }

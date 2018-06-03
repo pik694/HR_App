@@ -18,9 +18,11 @@ public class ProcessDTO {
     @JsonProperty("id")
     private int id;
 
+    @Setter
     @JsonProperty("job")
     private JobPostingDTO job;
 
+    @Setter
     @JsonProperty("applicant")
     private ApplicantDTO applicant;
 
@@ -30,7 +32,4 @@ public class ProcessDTO {
     @JsonProperty("comments")
     private List<CommentDTO> comments;
 
-    public void addComment(CommentDTO commentDTO) {
-        comments.add(commentDTO);
-    }
 }

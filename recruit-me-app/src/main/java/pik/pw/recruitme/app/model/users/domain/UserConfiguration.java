@@ -5,14 +5,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-class UserConfiguration {
+public class UserConfiguration {
 
-    UserFacade userFacade() {
+    public UserFacade userFacade() {
         return userFacade(new InMemoryUserRepository());
     }
 
     @Bean
-    UserFacade userFacade(@Qualifier("userRepository") UserRepository repository) {
+    public UserFacade userFacade(@Qualifier("userRepository") UserRepository repository) {
         UserFactory creator = new UserFactory();
         return new UserFacade(repository, creator);
     }

@@ -2,8 +2,6 @@ version: "2"
 
 services:
   frontend:
-    build:
-      context: ./frontend
     ports:
       - "8081:80"
 

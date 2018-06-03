@@ -74,7 +74,7 @@ public class CommentController {
     void updateComment(@RequestBody CommentDTO commentDTO){
 
 
-        commentFacade.add(commentDTO);
+        commentFacade.update(commentDTO);
     }
 
 }

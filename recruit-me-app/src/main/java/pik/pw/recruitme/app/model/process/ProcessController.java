@@ -39,6 +39,8 @@ public class ProcessController {
     @PostMapping("/processes")
     ProcessDTO addProcess(@RequestBody ProcessDTO processDTO) {
 
+
+
         return processFacade.add(processDTO);
     }
 
@@ -56,7 +58,7 @@ public class ProcessController {
         processFacade.delete(id);
     }
 
-    @GetMapping("/process/{id}")
+    @GetMapping("/processes/{id}")
     ProcessDTO getProcess(@PathVariable int id) {
 
         return processFacade.show(id);
@@ -96,9 +98,8 @@ public class ProcessController {
     @PostMapping("/processes/{id}/comments")
     CommentDTO addComment(@RequestBody CommentDTO commentDTO, @PathVariable int id) {
 
-        ProcessDTO processDTO = processFacade.show(id);
-        processDTO.addComment(commentDTO);
-        return commentFacade.add(commentDTO);
+
+        return commentFacade.add(commentDTO, id);
     }
 
     @PutMapping("/processes/{id}/comments")

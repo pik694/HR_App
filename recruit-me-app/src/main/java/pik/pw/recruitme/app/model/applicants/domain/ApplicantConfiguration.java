@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ApplicantConfiguration {
 
-    ApplicantFacade applicantFacade() {
+    public ApplicantFacade applicantFacade() {
         return applicantFacade(new InMemoryApplicantsRepository());
     }
 

@@ -7,6 +7,6 @@ ENV MYSQL_DATABASE=RECRUIT_ME \
     MYSQL_USER=test \
     MYSQL_PASSWORD=test6969
 
-ADD db_script.sql /docker-entrypoint-initdb.d
+#ADD db_script.sql /docker-entrypoint-initdb.d
 
 EXPOSE 3306

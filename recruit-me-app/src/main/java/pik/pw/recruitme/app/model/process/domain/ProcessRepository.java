@@ -6,7 +6,7 @@ import pik.pw.recruitme.app.infrastructure.mvc.ObjectNotFoundException;
 
 import java.util.List;
 
-public interface ProcessRepository extends Repository<Process, Integer> {
+interface ProcessRepository extends Repository<Process, Integer> {
 
     Process save(Process process);
 

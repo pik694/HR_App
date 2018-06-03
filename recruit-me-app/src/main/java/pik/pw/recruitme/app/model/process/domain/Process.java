@@ -25,28 +25,28 @@ class Process {
     private int id;
 
     @NotNull
-    @NotEmpty
     @ManyToOne
     @JoinColumn(name="job_posting_id", nullable = false)
     private JobPosting job;
 
-    @NotEmpty
     @NotNull
     @ManyToOne
     @JoinColumn(name="applicant_id", nullable = false)
     private Applicant applicant;
 
     @NotNull
-    @NotEmpty
     private Integer status;
 
-    @OneToMany(mappedBy="comment")
+    @OneToMany(mappedBy="process")
     private List<Comment> comments;
 
     private List<CommentDTO> convertComments()
     {
         List<CommentDTO> dtos = new ArrayList<>();
+
+        if (comments != null)
         comments.forEach(comment -> dtos.add( comment.toDTO()));
+
         return dtos;
     }
 

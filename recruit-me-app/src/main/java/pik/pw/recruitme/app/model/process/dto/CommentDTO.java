@@ -5,6 +5,8 @@ import lombok.*;
 import pik.pw.recruitme.app.model.users.dto.UserDTO;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Builder
 @Getter
@@ -16,12 +18,17 @@ public class CommentDTO {
     @JsonProperty("id")
     private int id;
 
+    @Setter
     @JsonProperty("user")
     private UserDTO user;
 
+    @Setter
     @JsonProperty("date")
-    private Date date;
+    private LocalDateTime date;
 
     @JsonProperty("content")
     private String content;
+
+//    @JsonProperty("process")
+//    private ProcessDTO process;
 }
