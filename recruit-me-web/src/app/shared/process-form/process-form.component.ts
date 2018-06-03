@@ -29,7 +29,12 @@ export class ProcessFormComponent implements OnInit {
               this.jobService.getJobPosting(this.jobId).subscribe(job => this.job = job);
           } else {
               this.editing = true;
-              this.procService.getProcess(id).subscribe(proc => this.model = proc);
+              this.procService.getProcess(id).subscribe(proc => {
+                  this.model = proc;
+                  this.applicantId = proc.applicant.id;
+                  this.job = proc.job;
+                  this.jobId = proc.job.id;
+              });
           }
           this.statuses = Process.statuses;
       });

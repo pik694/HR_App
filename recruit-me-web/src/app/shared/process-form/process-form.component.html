@@ -1,4 +1,4 @@
-<h1>Recruitment process for {{ job }} position</h1>
+<h1>Recruitment process for {{ job.title }} position</h1>
 <form (ngSubmit)="saveProcess()" #processForm="ngForm">
   <div *ngIf="editing" class="form-group">
     <label for="jobId">Job's Id</label>
