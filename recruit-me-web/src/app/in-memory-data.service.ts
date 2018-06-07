@@ -2,7 +2,7 @@ import {InMemoryDbService, ParsedRequestUrl, RequestInfoUtilities} from 'angular
 import {User} from './users/user';
 import {JobPosting} from './jobpostings/jobposting';
 import {Applicant, Resume} from './applicants/applicant';
-import {Process, ProcessStatus} from './processes/process';
+import {Process} from './processes/process';
 import {Comment} from './processes/comment/comment';
 
 export class InMemoryDataService implements InMemoryDbService {

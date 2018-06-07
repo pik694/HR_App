@@ -47,21 +47,18 @@ export class CommentComponent implements OnInit {
   }
 
   updateComment() {
-      this.service.updateComment(this.model);
-      this.isEditing = false;
+      this.service.updateComment(this.model).subscribe( _ => this.isEditing = false);
   }
 
   createComment() {
     this.service.createCommentForProcess(this.model, this.processId).subscribe(comment => {
-      console.log(comment);
       this.onCommentCreation.emit(comment);
     });
     this.model.content = '';
   }
 
   deleteComment() {
-    this.service.deleteComment(this.model);
-    this.onCommentDelete.emit(this.model);
+    this.service.deleteComment(this.model).subscribe( _ => this.onCommentDelete.emit(this.model));
   }
 
   startEditing() {
