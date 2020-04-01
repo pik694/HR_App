@@ -1,8 +1,0 @@
-version: "2"
-
-services:
-  frontend:
-    ports:
-      - "8081:80"
-
-

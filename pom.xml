@@ -27,7 +27,6 @@
 
     <modules>
         <module>recruit-me-app</module>
-        <module>recruit-me-web</module>
     </modules>
 
 
